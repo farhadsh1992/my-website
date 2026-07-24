@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farhad Shadmand</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body class="video-page">
+  <header class="site-nav site-nav--overlay">
+    <a href="index.html" class="site-logo" data-en="Farhad Shadmand" data-pt="Farhad Shadmand">Farhad Shadmand</a>
+    <nav class="site-nav-links">
+      <a href="cv.html" data-en="CV" data-pt="CV">CV</a>
+      <a href="blog.html" data-en="Blog" data-pt="Blog">Blog</a>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark and light mode">🌙</button>
+      <button id="lang-toggle" class="icon-btn lang-btn" type="button" aria-label="Switch language">PT</button>
+    </nav>
+  </header>
+
+  <a href="cv.html" class="video-link" aria-label="Enter site — view CV">
+    <video
+      class="bg-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="assets/video/poster.jpg"
+    >
+      <source src="assets/video/intro.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="overlay">
+      <h1 class="name">Farhad Shadmand</h1>
+      <p class="cta" data-en="Click anywhere to view my CV" data-pt="Clique em qualquer lugar para ver o meu CV">Click anywhere to view my CV</p>
+    </div>
+  </a>
+
+  <script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farhad Shadmand — CV</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body class="cv-page">
+  <header class="site-nav">
+    <a href="index.html" class="site-logo" data-en="Farhad Shadmand" data-pt="Farhad Shadmand">Farhad Shadmand</a>
+    <nav class="site-nav-links">
+      <a href="cv.html" class="active" data-en="CV" data-pt="CV">CV</a>
+      <a href="blog.html" data-en="Blog" data-pt="Blog">Blog</a>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark and light mode">🌙</button>
+      <button id="lang-toggle" class="icon-btn lang-btn" type="button" aria-label="Switch language">PT</button>
+    </nav>
+  </header>
+
+  <div class="cover-photo">
+    <img
+      class="cover-img cover-img--dark"
+      src="assets/images/cover.jpg"
+      alt=""
+      onerror="this.style.display='none'"
+    >
+    <img
+      class="cover-img cover-img--light"
+      src="assets/images/cover-light.jpg"
+      alt=""
+      onerror="this.style.display='none'"
+    >
+  </div>
+
+  <main class="cv">
+    <header class="cv-header">
+      <div class="profile-row">
+        <div class="avatar">
+          <span class="avatar-fallback">FS</span>
+          <img
+            class="avatar-img"
+            src="assets/images/profile.png"
+            alt="Farhad Shadmand"
+            onerror="this.style.display='none'"
+            onload="this.previousElementSibling.style.display='none'"
+          >
+        </div>
+        <div class="profile-info">
+          <h1>Farhad Shadmand</h1>
+          <p class="title" data-en="AI Researcher and Developer" data-pt="Investigador e Programador de IA">AI Researcher and Developer</p>
+          <p class="tagline">#OPENTOWORK</p>
+          <a href="assets/cv.pdf" class="download-btn" download data-en="Download CV (PDF)" data-pt="Descarregar CV (PDF)">Download CV (PDF)</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="cv-layout">
+      <aside class="cv-sidebar">
+        <h2 data-en="Contact" data-pt="Contacto">Contact</h2>
+        <ul class="sidebar-list">
+          <li>
+            <span class="sidebar-label" data-en="Phone" data-pt="Telefone">Phone</span>
+            <a href="tel:+351912292634">+351 912 292 634</a>
+          </li>
+          <li>
+            <span class="sidebar-label" data-en="Email" data-pt="Email">Email</span>
+            <a href="mailto:farhadsh1992@gmail.com">farhadsh1992@gmail.com</a>
+          </li>
+          <li>
+            <span class="sidebar-label" data-en="Citizenship" data-pt="Nacionalidade">Citizenship</span>
+            <span>Portugal</span>
+          </li>
+          <li>
+            <span class="sidebar-label" data-en="Location" data-pt="Localização">Location</span>
+            <span>Coimbra, Portugal</span>
+          </li>
+          <li>
+            <span class="sidebar-label" data-en="GitHub" data-pt="GitHub">GitHub</span>
+            <a href="https://www.github.com/farhadsh1992/" target="_blank" rel="noopener noreferrer">farhadsh1992</a>
+          </li>
+          <li>
+            <span class="sidebar-label" data-en="LinkedIn" data-pt="LinkedIn">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/farhadsh1992/" target="_blank" rel="noopener noreferrer">farhadsh1992</a>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="cv-main">
+        <nav class="section-nav">
+          <a href="#about" data-en="About" data-pt="Sobre">About</a>
+          <a href="#experience" data-en="Experience" data-pt="Experiência">Experience</a>
+          <a href="#skills" data-en="Skills" data-pt="Competências">Skills</a>
+          <a href="#languages" data-en="Languages" data-pt="Idiomas">Languages</a>
+          <a href="#education" data-en="Education" data-pt="Formação Académica">Education</a>
+          <a href="#patents" data-en="Patents" data-pt="Patentes">Patents</a>
+          <a href="#publications" data-en="Publications" data-pt="Publicações">Publications</a>
+        </nav>
+
+        <section class="cv-section" id="about">
+          <h2 data-en="About" data-pt="Sobre">About</h2>
+          <p
+            data-en="I am a researcher and developer with hands-on experience building deep learning models based on diffusion models, GANs, and VLM-based systems on multi-GPU platforms (CUDA). My work has led to multiple publications, including a new model submitted to CVPR 2026. I bring strong skills in PyTorch, computer vision, model optimization, and AI agents."
+            data-pt="Sou investigador e programador com experiência prática no desenvolvimento de modelos de deep learning baseados em modelos de difusão, GANs e sistemas baseados em VLM em plataformas multi-GPU (CUDA). O meu trabalho deu origem a várias publicações, incluindo um novo modelo submetido à CVPR 2026. Tenho fortes competências em PyTorch, visão computacional, otimização de modelos e agentes de IA."
+          >
+            I am a researcher and developer with hands-on
+            experience building deep learning models based
+            on diffusion models, GANs, and VLM-based
+            systems on multi-GPU platforms (CUDA). My work
+            has led to multiple publications, including a new
+            model submitted to CVPR 2026. I bring strong skills
+            in PyTorch, computer vision, model optimization,
+            and AI agents.
+          </p>
+        </section>
+
+        <section class="cv-section" id="experience">
+          <h2 data-en="Experience" data-pt="Experiência">Experience</h2>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <h3 data-en="Post-doctoral Researcher — VisTeam, Institute of Systems and Robotics – Coimbra (ISR)" data-pt="Investigador de Pós-Doutoramento — VisTeam, Instituto de Sistemas e Robótica – Coimbra (ISR)">Post-doctoral Researcher — VisTeam, Institute of Systems and Robotics – Coimbra (ISR)</h3>
+              <span class="cv-dates" data-en="2026 — Present" data-pt="2026 — Presente">2026 — Present</span>
+            </div>
+            <p class="cv-meta" data-en="Coimbra, Portugal" data-pt="Coimbra, Portugal">Coimbra, Portugal</p>
+            <ul>
+              <li data-en="Research on generative video models, including video watermarking and diffusion-based generation (Stable Diffusion)." data-pt="Investigação em modelos generativos de vídeo, incluindo marca de água em vídeo e geração baseada em modelos de difusão (Stable Diffusion).">Research on generative video models, including video watermarking and diffusion-based generation (Stable Diffusion).</li>
+              <li data-en="Stack: PyTorch, Hugging Face, Accelerate, Slurm, OpenCV, Weights &amp; Biases (wandb)." data-pt="Stack: PyTorch, Hugging Face, Accelerate, Slurm, OpenCV, Weights &amp; Biases (wandb).">Stack: PyTorch, Hugging Face, Accelerate, Slurm, OpenCV, Weights &amp; Biases (wandb).</li>
+            </ul>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <h3 data-en="Research Intern — Adobe" data-pt="Estagiário de Investigação — Adobe">Research Intern — Adobe</h3>
+              <span class="cv-dates" data-en="Aug 2025 — Dec 2025" data-pt="Ago 2025 — Dez 2025">Aug 2025 — Dec 2025</span>
+            </div>
+            <p class="cv-meta" data-en="Paris, France" data-pt="Paris, França">Paris, France</p>
+            <ul>
+              <li
+                data-en="Developed robust watermarking models using geometric symmetry-aware convolutional networks combined with a VLM-based generative noise-simulation pipeline to accurately replicate print-and-scan degradation effects."
+                data-pt="Desenvolvimento de modelos robustos de marca de água utilizando redes convolucionais sensíveis à simetria geométrica, combinadas com um pipeline de simulação de ruído generativo baseado em VLM para replicar com precisão os efeitos de degradação de impressão e digitalização."
+              >Developed robust watermarking models using geometric symmetry-aware convolutional networks combined with a VLM-based generative noise-simulation pipeline to accurately replicate print-and-scan degradation effects.</li>
+              <li
+                data-en="This approach significantly enhanced watermark resilience against real-world distortions introduced during printing, scanning, and image recapture."
+                data-pt="Esta abordagem melhorou significativamente a resiliência da marca de água contra distorções do mundo real introduzidas durante a impressão, digitalização e recaptura de imagens."
+              >This approach significantly enhanced watermark resilience against real-world distortions introduced during printing, scanning, and image recapture.</li>
+              <li data-en="Stack: Deep Learning, AWS, PyTorch Lightning, data distribution." data-pt="Stack: Deep Learning, AWS, PyTorch Lightning, distribuição de dados.">Stack: Deep Learning, AWS, PyTorch Lightning, data distribution.</li>
+            </ul>
+            <p class="cv-meta">
+              <span data-en="Manager:" data-pt="Gestora:">Manager:</span>
+              Dr. Shruti Agarwal
+              <a
+                href="assets/documents/recommendation-shruti-agarwal.pdf"
+                class="download-btn download-btn--sm"
+                download
+                data-en="Recommendation Letter (PDF)"
+                data-pt="Carta de Recomendação (PDF)"
+              >Recommendation Letter (PDF)</a>
+              (<a href="mailto:shragarw@adobe.com">shragarw@adobe.com</a>)
+            </p>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <h3 data-en="Researcher — VisTeam, Institute of Systems and Robotics – Coimbra (ISR)" data-pt="Investigador — VisTeam, Instituto de Sistemas e Robótica – Coimbra (ISR)">Researcher — VisTeam, Institute of Systems and Robotics – Coimbra (ISR)</h3>
+              <span class="cv-dates" data-en="Sep 2019 — Jul 2025" data-pt="Set 2019 — Jul 2025">Sep 2019 — Jul 2025</span>
+            </div>
+            <p class="cv-meta" data-en="Coimbra, Portugal" data-pt="Coimbra, Portugal">Coimbra, Portugal</p>
+            <ul>
+              <li
+                data-en="Developed deep learning models for steganography, watermarking, object detection, face detection, and face verification."
+                data-pt="Desenvolvimento de modelos de deep learning para esteganografia, marca de água, deteção de objetos, deteção facial e verificação facial."
+              >Developed deep learning models for steganography, watermarking, object detection, face detection, and face verification.</li>
+              <li>
+                <span data-en="Contributed to the projects" data-pt="Contribuí para os projetos">Contributed to the projects</span>
+                <a href="https://visteam.isr.uc.pt/projects/visual-id-unique-visual-identities-in-graphics-images-and-faces-2/" target="_blank" rel="noopener noreferrer"><strong>VISUAL-ID</strong></a>,
+                <a href="https://visteam.isr.uc.pt/projects/truim-trust-image-understanding/" target="_blank" rel="noopener noreferrer"><strong>TruIM</strong></a>,
+                <span data-en="and" data-pt="e">and</span>
+                <a href="https://visteam.isr.uc.pt/projects/facing-2/" target="_blank" rel="noopener noreferrer"><strong>FACING</strong></a>,
+                <span data-en="resulting in multiple publications and practical solutions for identity-document security." data-pt="resultando em várias publicações e soluções práticas para a segurança de documentos de identidade.">resulting in multiple publications and practical solutions for identity-document security.</span>
+              </li>
+              <li
+                data-en="Stack: deep learning libraries, computer vision libraries (OpenCV, dlib, Pillow), C++, Django, FastAPI."
+                data-pt="Stack: bibliotecas de deep learning, bibliotecas de visão computacional (OpenCV, dlib, Pillow), C++, Django, FastAPI."
+              >Stack: deep learning libraries, computer vision libraries (OpenCV, dlib, Pillow), C++, Django, FastAPI.</li>
+            </ul>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <h3 data-en="Researcher — Instituto Universitário de Lisboa (ISCTE)" data-pt="Investigador — Instituto Universitário de Lisboa (ISCTE)">Researcher — Instituto Universitário de Lisboa (ISCTE)</h3>
+              <span class="cv-dates" data-en="2018 — 2019" data-pt="2018 — 2019">2018 — 2019</span>
+            </div>
+            <p class="cv-meta" data-en="Lisbon, Portugal" data-pt="Lisboa, Portugal">Lisbon, Portugal</p>
+            <ul>
+              <li
+                data-en="In 2018, I moved to Lisbon and began my research at Instituto Universitário de Lisboa (ISCTE) and the Faculty of Sciences of the University of Lisbon (FCUL), under the supervision of Prof. José Carlos Dias."
+                data-pt="Em 2018, mudei-me para Lisboa e iniciei a minha investigação no Instituto Universitário de Lisboa (ISCTE) e na Faculdade de Ciências da Universidade de Lisboa (FCUL), sob a supervisão do Prof. José Carlos Dias."
+              >In 2018, I moved to Lisbon and began my research at Instituto Universitário de Lisboa (ISCTE) and the Faculty of Sciences of the University of Lisbon (FCUL), under the supervision of Prof. José Carlos Dias.</li>
+              <li
+                data-en="Applied machine learning, deep learning, and natural language processing (NLP) techniques to analyze financial markets, processing data from online news websites, Twitter, and stock market platforms to develop predictive models for financial trends."
+                data-pt="Apliquei técnicas de machine learning, deep learning e processamento de linguagem natural (PLN) para analisar mercados financeiros, processando dados de sites de notícias online, Twitter e plataformas de mercado de ações para desenvolver modelos preditivos de tendências financeiras."
+              >Applied machine learning, deep learning, and natural language processing (NLP) techniques to analyze financial markets, processing data from online news websites, Twitter, and stock market platforms to develop predictive models for financial trends.</li>
+              <li data-en="Stack: NLP libraries, Python, MATLAB." data-pt="Stack: bibliotecas de PLN, Python, MATLAB.">Stack: NLP libraries, Python, MATLAB.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="cv-section" id="skills">
+          <h2 data-en="Skills" data-pt="Competências">Skills</h2>
+
+          <div class="skill-group">
+            <h3 data-en="Programming Languages" data-pt="Linguagens de Programação">Programming Languages</h3>
+            <ul class="skills">
+              <li>Python</li>
+              <li>C++</li>
+              <li data-en="Java (Basic)" data-pt="Java (Básico)">Java (Basic)</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3 data-en="AI/ML" data-pt="IA/ML">AI/ML</h3>
+            <ul class="skills">
+              <li>PyTorch</li>
+              <li>TensorFlow</li>
+              <li>ONNX</li>
+              <li>PyTorch Lightning</li>
+              <li>Hugging Face</li>
+              <li>DeepSpeed</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3 data-en="AI Agents" data-pt="Agentes de IA">AI Agents</h3>
+            <ul class="skills">
+              <li>LangChain</li>
+              <li>LangSmith</li>
+              <li>LangGraph</li>
+              <li>LangFlow</li>
+              <li>RAG</li>
+              <li>Gradio</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3 data-en="Systems" data-pt="Sistemas">Systems</h3>
+            <ul class="skills">
+              <li>Multi-GPU</li>
+              <li>CUDA</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3 data-en="Computer Vision" data-pt="Visão Computacional">Computer Vision</h3>
+            <ul class="skills">
+              <li>OpenCV</li>
+              <li>dlib</li>
+              <li>Pillow</li>
+              <li>Scikit-learn</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3 data-en="Data" data-pt="Dados">Data</h3>
+            <ul class="skills">
+              <li>SQL</li>
+              <li>MySQL</li>
+              <li>Spark</li>
+              <li>pandas</li>
+              <li>ChromaDB</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="cv-section" id="languages">
+          <h2 data-en="Languages" data-pt="Idiomas">Languages</h2>
+          <ul class="skills">
+            <li data-en="Persian (Native)" data-pt="Persa (Nativo)">Persian (Native)</li>
+            <li data-en="English (Fluent)" data-pt="Inglês (Fluente)">English (Fluent)</li>
+            <li data-en="Portuguese (Beginner)" data-pt="Português (Iniciante)">Portuguese (Beginner)</li>
+          </ul>
+        </section>
+
+        <section class="cv-section" id="education">
+          <h2 data-en="Education" data-pt="Formação Académica">Education</h2>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <h3 data-en="PhD in Electrical Engineering and Intelligent Systems" data-pt="Doutoramento em Engenharia Eletrotécnica e Sistemas Inteligentes">PhD in Electrical Engineering and Intelligent Systems</h3>
+              <span class="cv-dates" data-en="2021 — 2026" data-pt="2021 — 2026">2021 — 2026</span>
+            </div>
+            <p class="cv-org" data-en="University of Coimbra" data-pt="Universidade de Coimbra">University of Coimbra</p>
+            <p class="cv-meta" data-en="Coimbra, Portugal" data-pt="Coimbra, Portugal">Coimbra, Portugal</p>
+            <p
+              class="cv-meta"
+              data-en="My PhD focused on developing printable steganography and watermarking models for identity-document security, combining encoder–decoder architectures, geometric-symmetric convolutions, and advanced noise-simulation pipelines. I designed and optimized several deep-learning frameworks for reliable message embedding under real print-and-capture distortions. The work resulted in multiple publications, including IEEE Access, CVPR, and WACV."
+              data-pt="O meu doutoramento centrou-se no desenvolvimento de modelos de esteganografia e marca de água imprimíveis para a segurança de documentos de identidade, combinando arquiteturas encoder–decoder, convoluções geométrico-simétricas e pipelines avançados de simulação de ruído. Concebi e otimizei várias frameworks de deep learning para a incorporação fiável de mensagens sob distorções reais de impressão e captura. O trabalho resultou em várias publicações, incluindo IEEE Access, CVPR e WACV."
+            >
+              My PhD focused on developing printable steganography and
+              watermarking models for identity-document security, combining
+              encoder–decoder architectures, geometric-symmetric convolutions,
+              and advanced noise-simulation pipelines. I designed and optimized
+              several deep-learning frameworks for reliable message embedding
+              under real print-and-capture distortions. The work resulted in multiple
+              publications, including IEEE Access, CVPR, and WACV.
+            </p>
+            <p class="cv-meta">
+              <span data-en="Supervisors:" data-pt="Orientadores:">Supervisors:</span>
+              Prof. Nuno Gonçalves (<a href="mailto:nunogon@deec.uc.pt">nunogon@deec.uc.pt</a>)
+              <span data-en="and" data-pt="e">and</span>
+              Prof. Luiz Schirmer (<a href="mailto:Luiz.schirmer@ufsm.br">Luiz.schirmer@ufsm.br</a>)
+            </p>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <h3 data-en="M.Sc. in Complex Systems, Physics" data-pt="Mestrado em Sistemas Complexos, Física">M.Sc. in Complex Systems, Physics</h3>
+              <span class="cv-dates" data-en="2015 — 2017" data-pt="2015 — 2017">2015 — 2017</span>
+            </div>
+            <p class="cv-org" data-en="Isfahan University of Technology" data-pt="Universidade de Tecnologia de Isfahan">Isfahan University of Technology</p>
+            <p class="cv-meta" data-en="Isfahan, Iran" data-pt="Isfahan, Irão">Isfahan, Iran</p>
+            <p
+              class="cv-meta"
+              data-en="I specialize in predicting and modeling stock market behavior, utilizing advanced data analysis and machine learning techniques to forecast trends and inform investment strategies."
+              data-pt="Especializo-me na previsão e modelação do comportamento do mercado de ações, utilizando técnicas avançadas de análise de dados e machine learning para prever tendências e fundamentar estratégias de investimento."
+            >
+              I specialize in predicting and modeling stock market behavior, utilizing
+              advanced data analysis and machine learning techniques to forecast
+              trends and inform investment strategies.
+            </p>
+            <p class="cv-meta">
+              <span data-en="Supervisor:" data-pt="Orientador:">Supervisor:</span>
+              Prof. Farhad Shahbazi (<a href="mailto:shahbazi@iut.ac.ir">shahbazi@iut.ac.ir</a>)
+            </p>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <h3 data-en="Bachelor's in Physics" data-pt="Licenciatura em Física">Bachelor's in Physics</h3>
+              <span class="cv-dates" data-en="2011 — 2015" data-pt="2011 — 2015">2011 — 2015</span>
+            </div>
+            <p class="cv-org" data-en="Isfahan University of Technology" data-pt="Universidade de Tecnologia de Isfahan">Isfahan University of Technology</p>
+            <p class="cv-meta" data-en="Isfahan, Iran" data-pt="Isfahan, Irão">Isfahan, Iran</p>
+            <p class="cv-meta" data-en="Among the top 10% of graduates." data-pt="Entre os 10% melhores graduados.">Among the top 10% of graduates.</p>
+          </div>
+        </section>
+
+        <section class="cv-section" id="patents">
+          <h2 data-en="Patents" data-pt="Patentes">Patents</h2>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <h3>Encoding, Decoding and Integrity Validation Systems for a Security Document with a Steganography-Encoded Image</h3>
+              <span class="cv-dates" data-en="Granted Oct. 2025" data-pt="Concedida em Out. 2025">Granted Oct. 2025</span>
+            </div>
+            <p class="cv-meta">
+              <span data-en="Inventors:" data-pt="Inventores:">Inventors:</span>
+              Nuno Gonçalves <span data-en="and" data-pt="e">and</span> Farhad Shadmand
+              &middot;
+              <span data-en="Applicants:" data-pt="Requerentes:">Applicants:</span>
+              Imprensa Nacional Casa da Moeda <span data-en="and" data-pt="e">and</span> University of Coimbra
+            </p>
+            <p
+              class="cv-meta"
+              data-en="Encoding, decoding and integrity validation systems for a security document with a steganography-encoded image and methods, computer programs and associated computer-readable data carrier."
+              data-pt="Sistemas de codificação, descodificação e validação da integridade de um documento de segurança com uma imagem codificada por esteganografia e respetivos métodos, programas de computador e suporte de dados legível por computador."
+            >
+              Encoding, decoding and integrity validation systems for a security document with a
+              steganography-encoded image and methods, computer programs and associated
+              computer-readable data carrier.
+            </p>
+            <p class="cv-meta">
+              <a href="https://patents.google.com/patent/PT117136A/en" target="_blank" rel="noopener noreferrer">PT117136A</a>
+              (Portugal)
+              &middot;
+              <a href="https://patents.google.com/patent/EP4064095A1/en" target="_blank" rel="noopener noreferrer">EP4064095A1</a>
+              (<span data-en="European Patent Office" data-pt="Instituto Europeu de Patentes">European Patent Office</span>)
+            </p>
+          </div>
+        </section>
+
+        <section class="cv-section" id="publications">
+          <h2 data-en="Publications" data-pt="Publicações">Publications</h2>
+          <ul class="pub-list">
+            <li>
+              <a href="https://openaccess.thecvf.com/content/CVPR2024W/WMF/html/Shadmand_StampOne_Addressing_Frequency_Balance_in_Printer-proof_Steganography_CVPRW_2024_paper.html" target="_blank" rel="noopener noreferrer">StampOne: Addressing Frequency Balance in Printer-proof Steganography</a>
+              <span class="pub-venue">— CVPR (2024)</span>
+            </li>
+            <li>
+              <a href="https://ieeexplore.ieee.org/document/9634021/" target="_blank" rel="noopener noreferrer">CodeFace: A Deep Learning Printer-Proof Steganography for Face Portraits</a>
+              <span class="pub-venue">— IEEE Access 9 (2021)</span>
+            </li>
+            <li>
+              <a href="https://www.scitepress.org/Papers/2025/131908/131908.pdf" target="_blank" rel="noopener noreferrer">StylePuncher: Encoding a Hidden QR Code into Images</a>
+              <span class="pub-venue">— ICPRAM (2025)</span>
+            </li>
+            <li>
+              <a href="https://doi.org/10.1109/ACCESS.2026.3680290" target="_blank" rel="noopener noreferrer">DocSafe: Towards Practical Print-Proof Image Steganography via Frequency Decomposition and Covariance Alignment</a>
+              <span class="pub-venue">— IEEE Access (2026.3680290), 2026</span>
+            </li>
+            <li>
+              <a href="https://openaccess.thecvf.com/content/WACV2025/papers/Cruz_RiemStega_Covariance-Based_Loss_for_Print-Proof_Transmission_of_Data_in_Images_WACV_2025_paper.pdf" target="_blank" rel="noopener noreferrer">RiemStega: Covariance-based loss for print-proof transmission of data in images</a>
+              <span class="pub-venue">— WACV (2025)</span>
+            </li>
+            <li>
+              <a href="https://arxiv.org/abs/2301.05776" target="_blank" rel="noopener noreferrer">Young Labeled Faces in the Wild (YLFW): A Dataset for Children Faces Recognition</a>
+              <span class="pub-venue">— IEEE 18th International Conference on Automatic Face and Gesture Recognition (FG) (2024)</span>
+            </li>
+            <li>
+              <a href="https://arxiv.org/abs/2208.03110" target="_blank" rel="noopener noreferrer">MorDeephy: Face Morphing Detection via Fused Classification</a>
+              <span class="pub-venue">— 12th International Conference on Pattern Recognition Application and Methods (2022)</span>
+            </li>
+            <li>
+              <a href="https://doi.org/10.3390/app11136134" target="_blank" rel="noopener noreferrer">Towards Facial Biometrics for ID Document Validation in Mobile Devices</a>
+              <span class="pub-venue">— Applied Sciences 11.13 (2021)</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="site.js"></script>
+</body>
+</html>
