@@ -275,7 +275,11 @@ body {
 /* Larger cover/avatar variant, used on the Blog page */
 
 .cover-photo--lg {
-  height: 320px;
+  height: 420px;
+}
+
+.cover-photo--lg .cover-img {
+  object-position: center top;
 }
 
 .profile-row--lg {
