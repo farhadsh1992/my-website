@@ -49,5 +49,35 @@
         applyLanguage(next);
       });
     }
+
+    var videoLink = document.getElementById('video-link');
+    if (videoLink) {
+      var goToCv = function () {
+        window.location.href = 'cv.html';
+      };
+
+      videoLink.querySelectorAll('.lang-pick').forEach(function (pick) {
+        pick.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var picked = pick.getAttribute('data-lang');
+          localStorage.setItem('lang', LANGS.indexOf(picked) !== -1 ? picked : 'en');
+        });
+      });
+
+      videoLink.addEventListener('click', function (e) {
+        if (e.target.closest('.lang-pick')) return;
+        localStorage.setItem('lang', 'en');
+        goToCv();
+      });
+
+      videoLink.addEventListener('keydown', function (e) {
+        if (e.target !== videoLink) return;
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          localStorage.setItem('lang', 'en');
+          goToCv();
+        }
+      });
+    }
   });
 })();

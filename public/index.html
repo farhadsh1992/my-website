@@ -31,7 +31,7 @@
     </nav>
   </header>
 
-  <a href="cv.html" class="video-link" aria-label="Enter site — view CV">
+  <div id="video-link" class="video-link" role="link" tabindex="0" aria-label="Enter site — view CV">
     <video
       class="bg-video"
       autoplay
@@ -46,9 +46,18 @@
 
     <div class="overlay">
       <h1 class="name">Farhad Shadmand</h1>
-      <p class="cta" data-en="Click anywhere to view my CV" data-pt="Clique em qualquer lugar para ver o meu CV" data-nl="Klik ergens om mijn cv te bekijken" data-de="Klicken Sie irgendwo, um meinen Lebenslauf zu sehen" data-fr="Cliquez n'importe où pour voir mon CV" data-it="Clicca ovunque per vedere il mio CV" data-es="Haz clic en cualquier lugar para ver mi CV">Click anywhere to view my CV</p>
+      <p class="cta" data-en="Click to view my CV" data-pt="Clique para ver o meu CV" data-nl="Klik om mijn cv te bekijken" data-de="Klicken Sie, um meinen Lebenslauf zu sehen" data-fr="Cliquez pour voir mon CV" data-it="Clicca per vedere il mio CV" data-es="Haz clic para ver mi CV">Click to view my CV</p>
+      <nav class="lang-picker" aria-label="Choose CV language">
+        <a href="cv.html" class="lang-pick" data-lang="en">EN</a>
+        <a href="cv.html" class="lang-pick" data-lang="pt">PT</a>
+        <a href="cv.html" class="lang-pick" data-lang="nl">NL</a>
+        <a href="cv.html" class="lang-pick" data-lang="de">DE</a>
+        <a href="cv.html" class="lang-pick" data-lang="fr">FR</a>
+        <a href="cv.html" class="lang-pick" data-lang="it">IT</a>
+        <a href="cv.html" class="lang-pick" data-lang="es">ES</a>
+      </nav>
     </div>
-  </a>
+  </div>
 
   <script src="site.js"></script>
 </body>
