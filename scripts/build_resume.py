@@ -214,6 +214,7 @@ skill_groups = [
             "Optimum-Habana, Optimum-ONNX, OpenAI SDK"),
     ("AI Agents", "LangChain, LangSmith, LangGraph, LangFlow, RAG, Gradio"),
     ("Systems", "Multi-GPU, CUDA, SLURM, Docker, Kubernetes (K8s), OpenHPC"),
+    ("CI/CD", "Jenkins, GitHub Actions, GitLab CI"),
     ("Computer Vision", "OpenCV, dlib, Pillow"),
     ("Data", "SQL, MySQL, Spark, pandas, ChromaDB"),
 ]
