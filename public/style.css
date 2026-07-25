@@ -179,25 +179,11 @@ body {
 
 .name {
   margin: 0;
+  font-family: "Snell Roundhand", "Brush Script MT", cursive;
   font-size: clamp(2rem, 6vw, 4rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   color: #fff;
-}
-
-.crowned-letter {
-  position: relative;
-  display: inline-block;
-}
-
-.crown {
-  position: absolute;
-  left: 50%;
-  top: -0.62em;
-  font-size: 0.55em;
-  transform: translateX(-50%) rotate(-22deg);
-  transform-origin: 50% 80%;
-  pointer-events: none;
 }
 
 .cta {
