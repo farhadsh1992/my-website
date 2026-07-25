@@ -15,6 +15,42 @@
     return { title: title, date: date, paragraphs: paragraphs };
   }
 
+  var MEDIA_CANDIDATES = [
+    { ext: 'jpg', kind: 'image' },
+    { ext: 'jpeg', kind: 'image' },
+    { ext: 'png', kind: 'image' },
+    { ext: 'gif', kind: 'image' },
+    { ext: 'webp', kind: 'image' },
+    { ext: 'mp4', kind: 'video' },
+    { ext: 'webm', kind: 'video' },
+  ];
+
+  function findMedia(num, callback) {
+    var i = 0;
+    function tryNext() {
+      if (i >= MEDIA_CANDIDATES.length) {
+        callback(null);
+        return;
+      }
+      var candidate = MEDIA_CANDIDATES[i];
+      var url = 'blog/post-' + num + '.' + candidate.ext;
+      fetch(url, { method: 'HEAD', cache: 'no-store' })
+        .then(function (res) {
+          if (res.ok) {
+            callback({ url: url, kind: candidate.kind });
+          } else {
+            i++;
+            tryNext();
+          }
+        })
+        .catch(function () {
+          i++;
+          tryNext();
+        });
+    }
+    tryNext();
+  }
+
   function buildTile(post) {
     var li = document.createElement('li');
     li.className = 'blog-post';
@@ -25,11 +61,25 @@
 
     var imgWrap = document.createElement('div');
     imgWrap.className = 'blog-tile-img';
-    var img = document.createElement('img');
-    img.src = 'blog/post-' + post.num + '.jpg';
-    img.alt = '';
-    img.onerror = function () { imgWrap.style.display = 'none'; };
-    imgWrap.appendChild(img);
+    imgWrap.style.display = 'none';
+    findMedia(post.num, function (media) {
+      if (!media) return;
+      var el;
+      if (media.kind === 'video') {
+        el = document.createElement('video');
+        el.autoplay = true;
+        el.muted = true;
+        el.loop = true;
+        el.playsInline = true;
+        el.src = media.url;
+      } else {
+        el = document.createElement('img');
+        el.src = media.url;
+        el.alt = '';
+      }
+      imgWrap.appendChild(el);
+      imgWrap.style.display = '';
+    });
 
     var body = document.createElement('div');
     body.className = 'blog-tile-body';

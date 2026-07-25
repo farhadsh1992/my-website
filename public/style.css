@@ -720,7 +720,8 @@ body {
   background: var(--chip-bg);
 }
 
-.blog-tile-img img {
+.blog-tile-img img,
+.blog-tile-img video {
   width: 100%;
   height: 100%;
   object-fit: cover;

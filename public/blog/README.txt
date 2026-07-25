@@ -29,14 +29,19 @@ Example (post-2.txt):
 
     Already planning to go back before the year is over.
 
-OPTIONAL: ADD A PHOTO
-----------------------
-To show a picture on a post, add an image in this same folder named
-to match the post number, e.g.:
+OPTIONAL: ADD A PHOTO, GIF, OR VIDEO
+-------------------------------------
+To show media on a post, add a file in this same folder named to
+match the post number — any ONE of these extensions works:
 
-    post-2.jpg
+    post-2.jpg   post-2.jpeg   post-2.png   post-2.gif   post-2.webp
+    post-2.mp4   post-2.webm
 
-If there's no matching image, the post just shows without one — that's
+Just pick whichever type fits (a still photo, an animated GIF, or a
+short video) — the page checks for all of them automatically and uses
+whichever one it finds. Videos play muted, looping, no sound needed.
+
+If there's no matching file, the post just shows without one — that's
 fine, nothing breaks.
 
 THAT'S IT
