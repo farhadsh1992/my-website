@@ -208,10 +208,13 @@ story.append(KeepTogether([
 section_heading("Skills")
 skill_groups = [
     ("Programming Languages", "Python, C++, Java (Basic)"),
-    ("AI/ML", "PyTorch, TensorFlow, ONNX, PyTorch Lightning, Hugging Face, DeepSpeed"),
+    ("AI/ML", "PyTorch, TensorFlow, ONNX, PyTorch Lightning, Hugging Face, DeepSpeed, Scikit-learn, "
+              "OpenVINO, XGBoost, LightGBM, CatBoost, torchdata, Accelerate, Keras, JAX, FLAX, Optax"),
+    ("NLP", "spaCy, NLTK, AllenNLP, Transformers, Tokenizers, Optimum-Intel, Optimum-Neuron, "
+            "Optimum-Habana, Optimum-ONNX, OpenAI SDK"),
     ("AI Agents", "LangChain, LangSmith, LangGraph, LangFlow, RAG, Gradio"),
-    ("Systems", "Multi-GPU, CUDA"),
-    ("Computer Vision", "OpenCV, dlib, Pillow, Scikit-learn"),
+    ("Systems", "Multi-GPU, CUDA, SLURM, Docker, Kubernetes (K8s), OpenHPC"),
+    ("Computer Vision", "OpenCV, dlib, Pillow"),
     ("Data", "SQL, MySQL, Spark, pandas, ChromaDB"),
 ]
 for label, items in skill_groups:
