@@ -418,7 +418,22 @@ body {
 }
 
 .sidebar-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
   margin-bottom: 1.1rem;
+}
+
+.sidebar-icon {
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.15rem;
+  color: var(--muted);
+}
+
+.sidebar-content {
+  min-width: 0;
 }
 
 .sidebar-label {
@@ -430,8 +445,8 @@ body {
   margin-bottom: 0.2rem;
 }
 
-.sidebar-list a,
-.sidebar-list span:last-child {
+.sidebar-content a,
+.sidebar-content span:last-child {
   color: var(--fg);
   font-size: 0.92rem;
   text-decoration: none;
