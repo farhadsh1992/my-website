@@ -366,11 +366,17 @@ body {
   color: var(--accent);
 }
 
+.download-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+
 .download-btn,
 .download-btn:link,
 .download-btn:visited {
   display: inline-block;
-  margin-top: 0.9rem;
   padding: 0.5rem 1.1rem;
   border: 1px solid var(--accent);
   border-radius: 999px;
