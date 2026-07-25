@@ -105,15 +105,15 @@ contact_line = (
 header_text.append(Paragraph(contact_line, contact_style))
 
 if os.path.exists(PHOTO_PATH):
-    photo = Image(PHOTO_PATH, width=24 * mm, height=23 * mm)
+    photo = Image(PHOTO_PATH, width=48 * mm, height=46 * mm)
     header_table = Table(
         [[photo, header_text]],
-        colWidths=[26 * mm, None],
+        colWidths=[50 * mm, None],
     )
     header_table.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("LEFTPADDING", (0, 0), (0, 0), 0),
-        ("LEFTPADDING", (1, 0), (1, 0), 8),
+        ("LEFTPADDING", (1, 0), (1, 0), 10),
         ("RIGHTPADDING", (0, 0), (-1, -1), 0),
         ("TOPPADDING", (0, 0), (-1, -1), 0),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
