@@ -93,16 +93,17 @@ header_text = [
     Paragraph("Farhad Shadmand", name_style),
     Paragraph("AI Researcher and Developer", title_style),
 ]
-contact_line = (
-    '+351 912 292 634 &nbsp;|&nbsp; '
-    '<link href="mailto:farhadsh1992@gmail.com">farhadsh1992@gmail.com</link> &nbsp;|&nbsp; '
-    '<link href="https://www.farhadshad.com">www.farhadshad.com</link> &nbsp;|&nbsp; '
-    '<link href="https://www.linkedin.com/in/farhadsh1992/">linkedin.com/in/farhadsh1992</link> &nbsp;|&nbsp; '
-    '<link href="https://www.github.com/farhadsh1992/">github.com/farhadsh1992</link> &nbsp;|&nbsp; '
-    '<link href="https://orcid.org/0000-0003-4399-4845">orcid.org/0000-0003-4399-4845</link> &nbsp;|&nbsp; '
-    '<link href="https://www.researchgate.net/profile/Farhad-Shadmand-2">ResearchGate</link>'
-)
-header_text.append(Paragraph(contact_line, contact_style))
+contact_items = [
+    '+351 912 292 634',
+    '<link href="mailto:farhadsh1992@gmail.com">farhadsh1992@gmail.com</link>',
+    '<link href="https://www.farhadshad.com">www.farhadshad.com</link>',
+    '<link href="https://www.linkedin.com/in/farhadsh1992/">linkedin.com/in/farhadsh1992</link>',
+    '<link href="https://www.github.com/farhadsh1992/">github.com/farhadsh1992</link>',
+    '<link href="https://orcid.org/0000-0003-4399-4845">orcid.org/0000-0003-4399-4845</link>',
+    '<link href="https://www.researchgate.net/profile/Farhad-Shadmand-2">ResearchGate</link>',
+]
+for item in contact_items:
+    header_text.append(Paragraph(item, contact_style))
 
 if os.path.exists(PHOTO_PATH):
     photo = Image(PHOTO_PATH, width=48 * mm, height=46 * mm)
