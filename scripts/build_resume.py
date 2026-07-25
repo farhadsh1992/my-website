@@ -96,6 +96,7 @@ header_text = [
 contact_line = (
     '+351 912 292 634 &nbsp;|&nbsp; '
     '<link href="mailto:farhadsh1992@gmail.com">farhadsh1992@gmail.com</link> &nbsp;|&nbsp; '
+    '<link href="https://www.farhadshad.com">www.farhadshad.com</link> &nbsp;|&nbsp; '
     '<link href="https://www.linkedin.com/in/farhadsh1992/">linkedin.com/in/farhadsh1992</link> &nbsp;|&nbsp; '
     '<link href="https://www.github.com/farhadsh1992/">github.com/farhadsh1992</link> &nbsp;|&nbsp; '
     '<link href="https://orcid.org/0000-0003-4399-4845">orcid.org/0000-0003-4399-4845</link> &nbsp;|&nbsp; '
