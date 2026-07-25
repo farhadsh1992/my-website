@@ -185,6 +185,21 @@ body {
   color: #fff;
 }
 
+.crowned-letter {
+  position: relative;
+  display: inline-block;
+}
+
+.crown {
+  position: absolute;
+  left: 50%;
+  top: -0.62em;
+  font-size: 0.55em;
+  transform: translateX(-50%) rotate(-22deg);
+  transform-origin: 50% 80%;
+  pointer-events: none;
+}
+
 .cta {
   margin-top: 0.75rem;
   font-size: 1rem;
