@@ -386,11 +386,9 @@ body {
 }
 
 .download-btn--sm {
-  margin-top: 0;
-  margin-left: 0.4rem;
+  margin-top: 0.5rem;
   padding: 0.2rem 0.7rem;
   font-size: 0.75rem;
-  vertical-align: middle;
 }
 
 /* Two-column layout: contact sidebar on the left, CV content on the right */
