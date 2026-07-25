@@ -200,7 +200,7 @@ story.append(KeepTogether([
         "Applied machine learning, deep learning, and natural language processing (NLP) techniques to analyze "
         "financial markets, processing data from online news websites, Twitter, and stock market platforms to "
         "develop predictive models for financial trends.",
-        "Stack: NLP libraries, Python, MATLAB.",
+        "Stack: NLP libraries, Python, MATLAB, Requests, BeautifulSoup, REST API.",
     ]),
 ]))
 
