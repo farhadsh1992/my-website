@@ -16,12 +16,15 @@ from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
-    HRFlowable, ListFlowable, ListItem, KeepTogether
+    HRFlowable, ListFlowable, ListItem, KeepTogether, Image
 )
 import os
 
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "public", "assets", "resume.pdf")
 OUT_PATH = os.path.abspath(OUT_PATH)
+
+PHOTO_PATH = os.path.join(os.path.dirname(__file__), "..", "public", "assets", "images", "profile.png")
+PHOTO_PATH = os.path.abspath(PHOTO_PATH)
 
 ACCENT = colors.HexColor("#C0202D")
 INK = colors.HexColor("#16181d")
@@ -86,18 +89,38 @@ pub_venue_style = ParagraphStyle(
 story = []
 
 # ---------- Header ----------
-story.append(Paragraph("Farhad Shadmand", name_style))
-story.append(Paragraph("AI Researcher and Developer", title_style))
+header_text = [
+    Paragraph("Farhad Shadmand", name_style),
+    Paragraph("AI Researcher and Developer", title_style),
+]
 contact_line = (
     '+351 912 292 634 &nbsp;|&nbsp; '
     '<link href="mailto:farhadsh1992@gmail.com">farhadsh1992@gmail.com</link> &nbsp;|&nbsp; '
-    'Coimbra, Portugal &nbsp;|&nbsp; '
     '<link href="https://www.linkedin.com/in/farhadsh1992/">linkedin.com/in/farhadsh1992</link> &nbsp;|&nbsp; '
     '<link href="https://www.github.com/farhadsh1992/">github.com/farhadsh1992</link> &nbsp;|&nbsp; '
     '<link href="https://orcid.org/0000-0003-4399-4845">orcid.org/0000-0003-4399-4845</link> &nbsp;|&nbsp; '
     '<link href="https://www.researchgate.net/profile/Farhad-Shadmand-2">ResearchGate</link>'
 )
-story.append(Paragraph(contact_line, contact_style))
+header_text.append(Paragraph(contact_line, contact_style))
+
+if os.path.exists(PHOTO_PATH):
+    photo = Image(PHOTO_PATH, width=24 * mm, height=23 * mm)
+    header_table = Table(
+        [[photo, header_text]],
+        colWidths=[26 * mm, None],
+    )
+    header_table.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (0, 0), 0),
+        ("LEFTPADDING", (1, 0), (1, 0), 8),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    story.append(header_table)
+else:
+    story.extend(header_text)
+
 story.append(Spacer(1, 4))
 story.append(HRFlowable(width="100%", thickness=1.1, color=ACCENT, spaceAfter=2))
 
