@@ -1,6 +1,9 @@
 (function () {
+  var LANGS = ['en', 'pt', 'nl', 'de', 'fr', 'it', 'es'];
+
   function storedLang() {
-    return localStorage.getItem('lang') || 'en';
+    var stored = localStorage.getItem('lang');
+    return LANGS.indexOf(stored) !== -1 ? stored : 'en';
   }
 
   function applyLanguage(lang) {
@@ -16,22 +19,18 @@
     btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
   }
 
-  function updateLangToggle(btn, lang) {
-    if (!btn) return;
-    btn.textContent = lang === 'en' ? 'PT' : 'EN';
-    btn.setAttribute('aria-label', 'Switch language to ' + (lang === 'en' ? 'Portuguese' : 'English'));
-  }
-
   document.addEventListener('DOMContentLoaded', function () {
     var themeBtn = document.getElementById('theme-toggle');
-    var langBtn = document.getElementById('lang-toggle');
+    var langSelect = document.getElementById('lang-select');
 
     var theme = document.documentElement.getAttribute('data-theme') || 'dark';
     updateThemeToggle(themeBtn, theme);
 
     var lang = storedLang();
     applyLanguage(lang);
-    updateLangToggle(langBtn, lang);
+    if (langSelect) {
+      langSelect.value = lang;
+    }
 
     if (themeBtn) {
       themeBtn.addEventListener('click', function () {
@@ -43,12 +42,11 @@
       });
     }
 
-    if (langBtn) {
-      langBtn.addEventListener('click', function () {
-        var next = storedLang() === 'en' ? 'pt' : 'en';
+    if (langSelect) {
+      langSelect.addEventListener('change', function () {
+        var next = LANGS.indexOf(langSelect.value) !== -1 ? langSelect.value : 'en';
         localStorage.setItem('lang', next);
         applyLanguage(next);
-        updateLangToggle(langBtn, next);
       });
     }
   });
