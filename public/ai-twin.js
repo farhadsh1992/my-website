@@ -76,6 +76,7 @@
     var log = document.getElementById('chat-log');
     var form = document.getElementById('chat-form');
     var input = document.getElementById('chat-input');
+    var modelSelect = document.getElementById('model-select');
     if (!log || !form || !input) return;
 
     var history = [];
@@ -109,7 +110,11 @@
       fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, history: history }),
+        body: JSON.stringify({
+          message: text,
+          history: history,
+          model: modelSelect ? modelSelect.value : undefined,
+        }),
       })
         .then(function (res) {
           return res.json();

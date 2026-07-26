@@ -932,6 +932,20 @@ body {
   border: 2px solid var(--hairline);
 }
 
+.model-select {
+  vertical-align: middle;
+  margin-left: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  background: var(--chip-bg);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .chat-avatar {
   width: 32px;
   height: 32px;
