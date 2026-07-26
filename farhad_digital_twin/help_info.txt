@@ -1,0 +1,16 @@
+Built at 1_foundations/community_contributions/farhad_digital_twin/:
+
+- app.py — Gradio chat UI, calls Llama 3.3 via Groq's free API
+- context.py — system prompt with the "never say anything negative about me" rule, reads profile.md
+- profile.md — placeholder for you to fill with your bio/LinkedIn/ISR/website content
+- tools.py — logs every Q&A pair to your ai-agents sheet automatically (not left to the model's discretion), plus a record_user_details tool for capturing visitor contact info
+- apps_script.gs — the Google Apps Script webhook code to paste into the Sheet
+- README.md — full setup walkthrough
+
+Three things only you can do next:
+
+1. Fill in 1_foundations/community_contributions/farhad_digital_twin/profile.md with your actual bio/LinkedIn/ISR/website content
+2. Get a free Groq API key and add GROQ_API_KEY to .env
+3. Paste apps_script.gs into your ai-agents Sheet's Apps Script editor, deploy as a Web App, and add the resulting URL as SHEETS_WEBHOOK_URL in .env
+
+Once those are done, run "uv run app.py" from that folder to test it locally. Deployment to actually embed it on farhadshad.com/LinkedIn/ISR (e.g. via a Hugging Face Space) is a separate step — let me know when you're ready for that and I'll walk you through it.

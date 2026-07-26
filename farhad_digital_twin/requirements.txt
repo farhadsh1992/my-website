@@ -1,0 +1,7 @@
+requests
+gradio
+openai
+python-dotenv
+pypdf
+fastapi
+uvicorn

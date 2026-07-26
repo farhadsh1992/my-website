@@ -11,6 +11,32 @@
     es: '🚧 Hola, soy T-801, el gemelo de IA de Farhad. ¡Llegaré pronto! Todavía no estoy conectado a una IA en vivo, pero vuelve pronto.',
   };
 
+  var LIVE_GREETING = {
+    en: "Hi, I'm T-801, Farhad's AI twin. Ask me anything about Farhad!",
+    pt: 'Olá, sou o T-801, o gémeo de IA do Farhad. Pergunte-me o que quiser sobre o Farhad!',
+    nl: 'Hoi, ik ben T-801, de AI-tweeling van Farhad. Vraag me alles over Farhad!',
+    de: 'Hallo, ich bin T-801, Farhads KI-Zwilling. Frag mich alles über Farhad!',
+    fr: 'Bonjour, je suis T-801, le jumeau IA de Farhad. Demandez-moi tout sur Farhad !',
+    it: 'Ciao, sono T-801, il gemello IA di Farhad. Chiedimi qualsiasi cosa su Farhad!',
+    es: 'Hola, soy T-801, el gemelo de IA de Farhad. ¡Pregúntame lo que quieras sobre Farhad!',
+  };
+
+  var THINKING = {
+    en: 'Thinking…',
+    pt: 'A pensar…',
+    nl: 'Aan het denken…',
+    de: 'Denke nach…',
+    fr: 'Je réfléchis…',
+    it: 'Sto pensando…',
+    es: 'Pensando…',
+  };
+
+  // Only set for local dev preview — production has no public backend deployed yet,
+  // so it falls back to the COMING_SOON placeholder below.
+  var API_URL = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
+    ? 'http://127.0.0.1:8799/chat'
+    : null;
+
   function storedLang() {
     var stored = localStorage.getItem('lang');
     return LANGS.indexOf(stored) !== -1 ? stored : 'en';
@@ -32,6 +58,7 @@
     wrap.appendChild(bubble);
     log.appendChild(wrap);
     log.scrollTop = log.scrollHeight;
+    return bubble;
   }
 
   var MOBILE_BREAKPOINT = '(max-width: 640px)';
@@ -51,10 +78,15 @@
     var input = document.getElementById('chat-input');
     if (!log || !form || !input) return;
 
+    var history = [];
     var lang = storedLang();
     updatePlaceholder(input, lang);
 
-    addMessage(log, COMING_SOON[lang] || COMING_SOON.en, 'assistant');
+    if (API_URL) {
+      addMessage(log, LIVE_GREETING[lang] || LIVE_GREETING.en, 'assistant');
+    } else {
+      addMessage(log, COMING_SOON[lang] || COMING_SOON.en, 'assistant');
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -62,10 +94,39 @@
       if (!text) return;
       addMessage(log, text, 'user');
       input.value = '';
-      setTimeout(function () {
-        var currentLang = storedLang();
-        addMessage(log, COMING_SOON[currentLang] || COMING_SOON.en, 'assistant');
-      }, 400);
+
+      var currentLang = storedLang();
+
+      if (!API_URL) {
+        setTimeout(function () {
+          addMessage(log, COMING_SOON[currentLang] || COMING_SOON.en, 'assistant');
+        }, 400);
+        return;
+      }
+
+      var thinkingBubble = addMessage(log, THINKING[currentLang] || THINKING.en, 'assistant');
+
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: history }),
+      })
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          if (data.error) {
+            thinkingBubble.textContent = data.error;
+            return;
+          }
+          thinkingBubble.textContent = data.answer;
+          log.scrollTop = log.scrollHeight;
+          history.push({ role: 'user', content: text });
+          history.push({ role: 'assistant', content: data.answer });
+        })
+        .catch(function () {
+          thinkingBubble.textContent = COMING_SOON[currentLang] || COMING_SOON.en;
+        });
     });
 
     var langSelect = document.getElementById('lang-select');
