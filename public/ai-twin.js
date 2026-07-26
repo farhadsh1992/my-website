@@ -2,13 +2,13 @@
   var LANGS = ['en', 'pt', 'nl', 'de', 'fr', 'it', 'es'];
 
   var COMING_SOON = {
-    en: "🚧 Hi, I'm Farshad, Farhad's AI twin. I'm coming soon! I'm not connected to a live AI just yet, but check back soon!",
-    pt: '🚧 Olá, sou o Farshad, o gémeo de IA do Farhad. Estou a chegar em breve! Ainda não estou ligado a uma IA em tempo real, mas volte em breve!',
-    nl: '🚧 Hoi, ik ben Farshad, de AI-tweeling van Farhad. Ik kom binnenkort! Ik ben nog niet verbonden met een live AI, maar kom snel terug!',
-    de: '🚧 Hallo, ich bin Farshad, Farhads KI-Zwilling. Ich komme bald! Ich bin noch nicht mit einer echten KI verbunden, aber schau bald wieder vorbei!',
-    fr: "🚧 Bonjour, je suis Farshad, le jumeau IA de Farhad. J'arrive bientôt ! Je ne suis pas encore connecté à une IA en direct, mais revenez bientôt !",
-    it: "🚧 Ciao, sono Farshad, il gemello IA di Farhad. Arrivo presto! Non sono ancora collegato a un'IA dal vivo, ma ricontrolla presto!",
-    es: '🚧 Hola, soy Farshad, el gemelo de IA de Farhad. ¡Llegaré pronto! Todavía no estoy conectado a una IA en vivo, pero vuelve pronto.',
+    en: "🚧 Hi, I'm T-801, Farhad's AI twin. I'm coming soon! I'm not connected to a live AI just yet, but check back soon!",
+    pt: '🚧 Olá, sou o T-801, o gémeo de IA do Farhad. Estou a chegar em breve! Ainda não estou ligado a uma IA em tempo real, mas volte em breve!',
+    nl: '🚧 Hoi, ik ben T-801, de AI-tweeling van Farhad. Ik kom binnenkort! Ik ben nog niet verbonden met een live AI, maar kom snel terug!',
+    de: '🚧 Hallo, ich bin T-801, Farhads KI-Zwilling. Ich komme bald! Ich bin noch nicht mit einer echten KI verbunden, aber schau bald wieder vorbei!',
+    fr: "🚧 Bonjour, je suis T-801, le jumeau IA de Farhad. J'arrive bientôt ! Je ne suis pas encore connecté à une IA en direct, mais revenez bientôt !",
+    it: "🚧 Ciao, sono T-801, il gemello IA di Farhad. Arrivo presto! Non sono ancora collegato a un'IA dal vivo, ma ricontrolla presto!",
+    es: '🚧 Hola, soy T-801, el gemelo de IA de Farhad. ¡Llegaré pronto! Todavía no estoy conectado a una IA en vivo, pero vuelve pronto.',
   };
 
   function storedLang() {
