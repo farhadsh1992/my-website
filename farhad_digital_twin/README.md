@@ -1,3 +1,14 @@
+---
+title: Farhad Digital Twin
+emoji: 🤖
+colorFrom: gray
+colorTo: red
+sdk: gradio
+sdk_version: 6.20.0
+app_file: app.py
+pinned: false
+---
+
 # Farhad's Digital Twin
 
 An AI chatbot that answers visitor questions about Farhad (career, research, background) using
@@ -51,9 +62,40 @@ cd 1_foundations/community_contributions/farhad_digital_twin
 uv run app.py
 ```
 
-This launches a local Gradio chat UI. To make it publicly reachable (e.g. to embed on
-farhadshad.com or link from LinkedIn/ISR), deploy it the same way the course teaches for the
-`twin/` lab — e.g. push this folder to a Hugging Face Space — and then link/embed that URL.
+This launches a local Gradio chat UI.
+
+## 5. Deploy publicly
+
+Two different deployments exist for two different purposes:
+
+**A standalone chat page (Hugging Face Space, free, Gradio UI)** - good for linking directly
+from LinkedIn/ISR, or just trying it out in a browser:
+
+1. Create a new Space at https://huggingface.co/new-space - pick **Gradio** as the SDK, any name
+   (e.g. `farhad-digital-twin`). Docker Spaces require a paid plan on Hugging Face, but Gradio
+   Spaces are free, and `app.py` is already a standard Gradio app - no changes needed. Note that
+   the free tier now runs on **ZeroGPU** hardware, so `app.py`'s `chat()` function needs the
+   `@spaces.GPU()` decorator (already added) even though no GPU is actually used.
+2. In the Space's **Settings > Variables and secrets**, add a secret named `GROQ_API_KEY` with
+   your Groq key (and `SHEETS_WEBHOOK_URL` too, if you've set that up).
+3. Push this folder's contents to the Space's git remote (same as pushing to GitHub, just a
+   different remote URL - the Space page shows the exact `git remote add` / `git push` commands).
+
+In testing, ZeroGPU's free tier queued/rejected anonymous API calls from outside sites (as
+opposed to visitors using the Space's own page directly), so it isn't used as the website's
+backend - see below instead.
+
+**The actual farhadshad.com chat widget (Render, free, plain FastAPI)** - `api.py` is a thin
+HTTP wrapper around the same chat logic, with no Gradio/GPU dependency at all:
+
+1. On [render.com](https://render.com), create a **Web Service** connected to this GitHub repo,
+   with **Root Directory** set to `farhad_digital_twin`.
+2. **Build Command**: `pip install -r requirements.txt` · **Start Command**:
+   `uvicorn api:app --host 0.0.0.0 --port $PORT` · **Instance Type**: Free.
+3. Add `GROQ_API_KEY` under **Environment Variables**.
+4. `../public/ai-twin.js` already points `API_URL` at the resulting `.onrender.com` URL for any
+   visitor not on localhost. Render's free tier sleeps after 15 minutes of inactivity, so the
+   first message after a quiet period can take up to a minute to respond.
 
 ## Notes
 

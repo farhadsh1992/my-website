@@ -1,4 +1,5 @@
 import os
+import spaces
 from openai import OpenAI
 from context import TWIN_SYSTEM_PROMPT, TWIN_NAME, TWIN_GREETING
 from tools import tools, handle_tool_calls, log_qa
@@ -14,6 +15,7 @@ groq = OpenAI(api_key=os.getenv("GROQ_API_KEY"), base_url="https://api.groq.com/
 system = [{"role": "system", "content": TWIN_SYSTEM_PROMPT}]
 
 
+@spaces.GPU()
 def chat(message, history):
     clean_history = [
         {"role": m["role"], "content": m["content"]}
