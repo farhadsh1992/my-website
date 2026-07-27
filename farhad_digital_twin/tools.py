@@ -13,7 +13,16 @@ def _post_to_sheet(row_type, **fields):
         print(f"[SHEETS_WEBHOOK_URL not set] would have logged: {row_type} {fields}", flush=True)
         return
     try:
-        requests.post(SHEETS_WEBHOOK_URL, json={"type": row_type, **fields}, timeout=10)
+        # Apps Script web apps always 302-redirect POST /exec to a one-time
+        # script.googleusercontent.com/macros/echo?... URL. That URL must be
+        # fetched with a clean GET (no body/headers carried over) or it
+        # 405s - so redirects are handled manually instead of relying on
+        # requests' automatic (and header-preserving) redirect following.
+        resp = requests.post(
+            SHEETS_WEBHOOK_URL, json={"type": row_type, **fields}, timeout=10, allow_redirects=False
+        )
+        if resp.status_code in (301, 302, 303) and "Location" in resp.headers:
+            requests.get(resp.headers["Location"], timeout=10)
     except requests.RequestException as e:
         print(f"Failed to log to sheet: {e}", flush=True)
 
