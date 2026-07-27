@@ -31,11 +31,11 @@
     es: 'Pensando…',
   };
 
-  // Only set for local dev preview — production has no public backend deployed yet,
-  // so it falls back to the COMING_SOON placeholder below.
+  var RENDER_API_URL = 'https://my-website-1pap.onrender.com/chat';
+
   var API_URL = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
     ? 'http://127.0.0.1:8799/chat'
-    : null;
+    : RENDER_API_URL;
 
   function storedLang() {
     var stored = localStorage.getItem('lang');
