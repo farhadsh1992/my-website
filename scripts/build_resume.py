@@ -333,7 +333,7 @@ publications = [
     ("CodeFace: A Deep Learning Printer-Proof Steganography for Face Portraits",
      "IEEE Access 9 (2021)",
      "https://ieeexplore.ieee.org/document/9634021/",
-     None),
+     "https://farhadsh1992.github.io/CodeFace2/"),
     ("StylePuncher: Encoding a Hidden QR Code into Images",
      "ICPRAM (2025)",
      "https://www.scitepress.org/Papers/2025/131908/131908.pdf",
