@@ -431,6 +431,7 @@ body {
   font-size: 0.75rem;
 }
 
+
 /* Two-column layout: contact sidebar on the left, CV content on the right */
 
 .cv-layout {
@@ -640,6 +641,14 @@ body {
 
 .pub-list a:hover {
   color: var(--accent);
+}
+
+.pub-list a.pub-link-green {
+  color: #22c55e;
+}
+
+.pub-list a.pub-link-green:hover {
+  color: #16a34a;
 }
 
 .pub-venue {
