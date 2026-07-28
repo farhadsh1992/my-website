@@ -328,32 +328,43 @@ section_heading("Publications")
 publications = [
     ("StampOne: Addressing Frequency Balance in Printer-proof Steganography",
      "CVPR (2024)",
-     "https://openaccess.thecvf.com/content/CVPR2024W/WMF/html/Shadmand_StampOne_Addressing_Frequency_Balance_in_Printer-proof_Steganography_CVPRW_2024_paper.html"),
+     "https://openaccess.thecvf.com/content/CVPR2024W/WMF/html/Shadmand_StampOne_Addressing_Frequency_Balance_in_Printer-proof_Steganography_CVPRW_2024_paper.html",
+     "https://farhadsh1992.github.io/StampOne/"),
     ("CodeFace: A Deep Learning Printer-Proof Steganography for Face Portraits",
      "IEEE Access 9 (2021)",
-     "https://ieeexplore.ieee.org/document/9634021/"),
+     "https://ieeexplore.ieee.org/document/9634021/",
+     None),
     ("StylePuncher: Encoding a Hidden QR Code into Images",
      "ICPRAM (2025)",
-     "https://www.scitepress.org/Papers/2025/131908/131908.pdf"),
+     "https://www.scitepress.org/Papers/2025/131908/131908.pdf",
+     None),
     ("DocSafe: Towards Practical Print-Proof Image Steganography via Frequency Decomposition and Covariance Alignment",
      "IEEE Access (2026.3680290), 2026",
-     "https://doi.org/10.1109/ACCESS.2026.3680290"),
+     "https://doi.org/10.1109/ACCESS.2026.3680290",
+     None),
     ("RiemStega: Covariance-based loss for print-proof transmission of data in images",
      "WACV (2025)",
-     "https://openaccess.thecvf.com/content/WACV2025/papers/Cruz_RiemStega_Covariance-Based_Loss_for_Print-Proof_Transmission_of_Data_in_Images_WACV_2025_paper.pdf"),
+     "https://openaccess.thecvf.com/content/WACV2025/papers/Cruz_RiemStega_Covariance-Based_Loss_for_Print-Proof_Transmission_of_Data_in_Images_WACV_2025_paper.pdf",
+     None),
     ("Young Labeled Faces in the Wild (YLFW): A Dataset for Children Faces Recognition",
      "IEEE 18th International Conference on Automatic Face and Gesture Recognition (FG) (2024)",
-     "https://arxiv.org/abs/2301.05776"),
+     "https://arxiv.org/abs/2301.05776",
+     None),
     ("MorDeephy: Face Morphing Detection via Fused Classification",
      "12th International Conference on Pattern Recognition Application and Methods (2022)",
-     "https://arxiv.org/abs/2208.03110"),
+     "https://arxiv.org/abs/2208.03110",
+     None),
     ("Towards Facial Biometrics for ID Document Validation in Mobile Devices",
      "Applied Sciences 11.13 (2021)",
-     "https://doi.org/10.3390/app11136134"),
+     "https://doi.org/10.3390/app11136134",
+     None),
 ]
-for title, venue, link in publications:
+for title, venue, link, code_link in publications:
     story.append(Paragraph('<link href="{}"><u>{}</u></link>'.format(link, title), pub_style))
-    story.append(Paragraph(venue, pub_venue_style))
+    venue_line = venue
+    if code_link:
+        venue_line += ' &middot; <link href="{}"><u>Code</u></link>'.format(code_link)
+    story.append(Paragraph(venue_line, pub_venue_style))
 
 doc = SimpleDocTemplate(
     OUT_PATH, pagesize=A4,
