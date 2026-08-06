@@ -17,6 +17,11 @@
   --chip-bg: rgba(0, 0, 0, 0.06);
 }
 
+/* CV page only: darker navy background in dark mode; other pages unchanged */
+:root:not([data-theme="light"]) .page-cv {
+  --bg: #000028;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
