@@ -79,5 +79,37 @@
         }
       });
     }
+
+    var sectionNav = document.querySelector('.section-nav');
+    if (sectionNav) {
+      var navLinks = Array.prototype.slice.call(sectionNav.querySelectorAll('a[href^="#"]'));
+      var sections = navLinks
+        .map(function (link) {
+          return document.getElementById(link.getAttribute('href').slice(1));
+        })
+        .filter(Boolean);
+
+      var setActive = function (id) {
+        navLinks.forEach(function (link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      };
+
+      var navHeight = sectionNav.getBoundingClientRect().height;
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+            }
+          });
+        },
+        { rootMargin: '-' + (navHeight + 1) + 'px 0px -70% 0px', threshold: 0 }
+      );
+
+      sections.forEach(function (section) {
+        observer.observe(section);
+      });
+    }
   });
 })();

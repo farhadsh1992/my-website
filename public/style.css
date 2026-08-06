@@ -543,6 +543,13 @@ body {
   color: var(--accent);
 }
 
+.section-nav a.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--chip-bg);
+  font-weight: 600;
+}
+
 .cv-section h2 {
   font-size: 1.1rem;
   text-transform: uppercase;
