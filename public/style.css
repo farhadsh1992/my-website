@@ -1340,3 +1340,92 @@ body {
 #education .cv-org {
   margin: 0.15rem 0 0;
 }
+
+/* ---------- CV page: mobile layout fixes ---------- */
+@media (max-width: 640px) {
+  /* The desktop-wide sidebar rule (.page-cv .cv-layout, 270px 1fr) has
+     higher specificity than the original single-column mobile rule and
+     was winning even on narrow screens, causing the two-column layout to
+     overflow horizontally. Restore the single-column stack on mobile. */
+  .page-cv .cv-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .page-cv .cv-section,
+  .page-cv .cv-sidebar {
+    padding: 1.25rem 1.25rem 1.5rem;
+    border-radius: 18px;
+  }
+
+  .page-cv .cv-section {
+    margin-top: 0.85rem;
+  }
+
+  /* Cover image removed on phone - it ate a lot of vertical space for
+     little payoff at this width. The avatar no longer needs to overlap
+     it, so profile-row switches from a negative pull-up margin to normal
+     top spacing. */
+  .page-cv .cover-photo {
+    display: none;
+  }
+
+  .page-cv .profile-row {
+    margin-top: 1.5rem;
+  }
+
+  /* Compact header: smaller avatar, tighter spacing, so the fold isn't
+     dominated by the photo. */
+  .page-cv .avatar-frame {
+    width: 96px;
+  }
+
+  .page-cv .avatar-frame .avatar,
+  .page-cv .avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .page-cv .profile-heading-row {
+    gap: 0.5rem;
+  }
+
+  .page-cv .cv-header h1 {
+    font-size: 1.7rem;
+  }
+
+  /* Section nav becomes a single horizontally-scrollable row instead of
+     wrapping across several lines. min-width:0 is required so the nav
+     actually scrolls internally instead of stretching its flex/grid
+     ancestors (and the whole page) wider than the viewport. */
+  .page-cv .cv-layout,
+  .page-cv .cv-main {
+    min-width: 0;
+  }
+
+  .page-cv .section-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    min-width: 0;
+  }
+
+  .page-cv .section-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page-cv .section-nav a {
+    flex-shrink: 0;
+  }
+
+  /* University logos removed on phone - just the title/org/dates. */
+  .cv-org-logo {
+    display: none;
+  }
+
+  .cv-entry-title-row {
+    justify-content: flex-start;
+    gap: 0.3rem 0.6rem;
+  }
+}
