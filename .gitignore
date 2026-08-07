@@ -3,3 +3,7 @@
 .venv/
 __pycache__/
 *.pyc
+
+# Local-only test page, never pushed
+public/cv2.html
+public/style-cv2.css

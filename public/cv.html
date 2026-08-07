@@ -61,20 +61,24 @@
   <main class="cv">
     <header class="cv-header">
       <div class="profile-row">
-        <div class="avatar">
-          <span class="avatar-fallback">FS</span>
-          <img
-            class="avatar-img"
-            src="assets/images/profile.png"
-            alt="Farhad Shadmand"
-            onerror="this.style.display='none'"
-            onload="this.previousElementSibling.style.display='none'"
-          >
+        <div class="avatar-frame">
+          <div class="avatar">
+            <span class="avatar-fallback">FS</span>
+            <img
+              class="avatar-img"
+              src="assets/images/profile.png"
+              alt="Farhad Shadmand"
+              onerror="this.style.display='none'"
+              onload="this.previousElementSibling.style.display='none'"
+            >
+          </div>
         </div>
         <div class="profile-info">
-          <h1>Farhad Shadmand</h1>
+          <div class="profile-heading-row">
+            <h1>Farhad Shadmand</h1>
+            <p class="tagline"><span class="status-dot"></span>Available for work</p>
+          </div>
           <p class="title" data-en="AI Researcher and Developer" data-pt="Investigador e Programador de IA" data-nl="AI-onderzoeker en -ontwikkelaar" data-de="KI-Forscher und -Entwickler" data-fr="Chercheur et développeur en IA" data-it="Ricercatore e sviluppatore IA" data-es="Investigador y desarrollador de IA">AI Researcher and Developer</p>
-          <p class="tagline">#OPENTOWORK</p>
           <div class="download-buttons">
             <a href="assets/resume.pdf" class="download-btn" download data-en="Download CV (PDF)" data-pt="Descarregar CV (PDF)" data-nl="Download CV (PDF)" data-de="Lebenslauf herunterladen (PDF)" data-fr="Télécharger le CV (PDF)" data-it="Scarica CV (PDF)" data-es="Descargar CV (PDF)">Download CV (PDF)</a>
           </div>
@@ -404,9 +408,9 @@
         <section class="cv-section" id="languages">
           <h2 data-en="Languages" data-pt="Idiomas" data-nl="Talen" data-de="Sprachen" data-fr="Langues" data-it="Lingue" data-es="Idiomas">Languages</h2>
           <ul class="skills">
-            <li data-en="Persian (Native)" data-pt="Persa (Nativo)" data-nl="Perzisch (Moedertaal)" data-de="Persisch (Muttersprache)" data-fr="Persan (Langue maternelle)" data-it="Persiano (Madrelingua)" data-es="Persa (Nativo)">Persian (Native)</li>
-            <li data-en="English (Fluent)" data-pt="Inglês (Fluente)" data-nl="Engels (Vloeiend)" data-de="Englisch (Fließend)" data-fr="Anglais (Courant)" data-it="Inglese (Fluente)" data-es="Inglés (Fluido)">English (Fluent)</li>
-            <li data-en="Portuguese (Beginner)" data-pt="Português (Iniciante)" data-nl="Portugees (Beginner)" data-de="Portugiesisch (Anfänger)" data-fr="Portugais (Débutant)" data-it="Portoghese (Principiante)" data-es="Portugués (Principiante)">Portuguese (Beginner)</li>
+            <li><img class="lang-flag" src="assets/images/flags/iran-pahlavi.svg" alt="Iran (Pahlavi-era Sun and Lion flag)"><span data-en="Persian (Native)" data-pt="Persa (Nativo)" data-nl="Perzisch (Moedertaal)" data-de="Persisch (Muttersprache)" data-fr="Persan (Langue maternelle)" data-it="Persiano (Madrelingua)" data-es="Persa (Nativo)">Persian (Native)</span></li>
+            <li><img class="lang-flag" src="assets/images/flags/uk.svg" alt="United Kingdom flag"><span data-en="English (Fluent)" data-pt="Inglês (Fluente)" data-nl="Engels (Vloeiend)" data-de="Englisch (Fließend)" data-fr="Anglais (Courant)" data-it="Inglese (Fluente)" data-es="Inglés (Fluido)">English (Fluent)</span></li>
+            <li><img class="lang-flag" src="assets/images/flags/portugal.svg" alt="Portugal flag"><span data-en="Portuguese (Beginner)" data-pt="Português (Iniciante)" data-nl="Portugees (Beginner)" data-de="Portugiesisch (Anfänger)" data-fr="Portugais (Débutant)" data-it="Portoghese (Principiante)" data-es="Portugués (Principiante)">Portuguese (Beginner)</span></li>
           </ul>
         </section>
 
@@ -414,10 +418,15 @@
           <h2 data-en="Education" data-pt="Formação Académica" data-nl="Opleiding" data-de="Ausbildung" data-fr="Formation" data-it="Istruzione" data-es="Educación">Education</h2>
           <div class="cv-entry">
             <div class="cv-entry-head">
-              <h3 data-en="PhD in Electrical Engineering and Intelligent Systems" data-pt="Doutoramento em Engenharia Eletrotécnica e Sistemas Inteligentes" data-nl="PhD in Elektrotechniek en Intelligente Systemen" data-de="Promotion in Elektrotechnik und Intelligenten Systemen" data-fr="Doctorat en Génie électrique et Systèmes intelligents" data-it="Dottorato in Ingegneria Elettrica e Sistemi Intelligenti" data-es="Doctorado en Ingeniería Eléctrica y Sistemas Inteligentes">PhD in Electrical Engineering and Intelligent Systems</h3>
-              <span class="cv-dates" data-en="2021 — 2026" data-pt="2021 — 2026" data-nl="2021 — 2026" data-de="2021 — 2026" data-fr="2021 — 2026" data-it="2021 — 2026" data-es="2021 — 2026">2021 — 2026</span>
+              <img class="cv-org-logo" src="assets/images/logos/university-of-coimbra.png" alt="University of Coimbra logo">
+              <div class="cv-entry-title-group">
+                <h3 data-en="PhD in Electrical Engineering and Intelligent Systems" data-pt="Doutoramento em Engenharia Eletrotécnica e Sistemas Inteligentes" data-nl="PhD in Elektrotechniek en Intelligente Systemen" data-de="Promotion in Elektrotechnik und Intelligenten Systemen" data-fr="Doctorat en Génie électrique et Systèmes intelligents" data-it="Dottorato in Ingegneria Elettrica e Sistemi Intelligenti" data-es="Doctorado en Ingeniería Eléctrica y Sistemas Inteligentes">PhD in Electrical Engineering and Intelligent Systems</h3>
+                <div class="cv-entry-title-row">
+                  <p class="cv-org" data-en="University of Coimbra" data-pt="Universidade de Coimbra" data-nl="University of Coimbra" data-de="University of Coimbra" data-fr="University of Coimbra" data-it="University of Coimbra" data-es="University of Coimbra">University of Coimbra</p>
+                  <span class="cv-dates" data-en="2021 — 2026" data-pt="2021 — 2026" data-nl="2021 — 2026" data-de="2021 — 2026" data-fr="2021 — 2026" data-it="2021 — 2026" data-es="2021 — 2026">2021 — 2026</span>
+                </div>
+              </div>
             </div>
-            <p class="cv-org" data-en="University of Coimbra" data-pt="Universidade de Coimbra" data-nl="University of Coimbra" data-de="University of Coimbra" data-fr="University of Coimbra" data-it="University of Coimbra" data-es="University of Coimbra">University of Coimbra</p>
             <p class="cv-meta" data-en="Coimbra, Portugal" data-pt="Coimbra, Portugal" data-nl="Coimbra, Portugal" data-de="Coimbra, Portugal" data-fr="Coimbra, Portugal" data-it="Coimbra, Portogallo" data-es="Coimbra, Portugal">Coimbra, Portugal</p>
             <p
               class="cv-meta"
@@ -446,10 +455,15 @@
           </div>
           <div class="cv-entry">
             <div class="cv-entry-head">
-              <h3 data-en="M.Sc. in Complex Systems, Physics" data-pt="Mestrado em Sistemas Complexos, Física" data-nl="MSc in Complexe Systemen, Natuurkunde" data-de="M.Sc. in Komplexen Systemen, Physik" data-fr="Master en Systèmes Complexes, Physique" data-it="Laurea Magistrale in Sistemi Complessi, Fisica" data-es="Máster en Sistemas Complejos, Física">M.Sc. in Complex Systems, Physics</h3>
-              <span class="cv-dates" data-en="2015 — 2017" data-pt="2015 — 2017" data-nl="2015 — 2017" data-de="2015 — 2017" data-fr="2015 — 2017" data-it="2015 — 2017" data-es="2015 — 2017">2015 — 2017</span>
+              <img class="cv-org-logo" src="assets/images/logos/isfahan-university-of-technology.svg" alt="Isfahan University of Technology logo">
+              <div class="cv-entry-title-group">
+                <div class="cv-entry-title-row">
+                  <h3 data-en="M.Sc. in Complex Systems, Physics" data-pt="Mestrado em Sistemas Complexos, Física" data-nl="MSc in Complexe Systemen, Natuurkunde" data-de="M.Sc. in Komplexen Systemen, Physik" data-fr="Master en Systèmes Complexes, Physique" data-it="Laurea Magistrale in Sistemi Complessi, Fisica" data-es="Máster en Sistemas Complejos, Física">M.Sc. in Complex Systems, Physics</h3>
+                  <span class="cv-dates" data-en="2015 — 2017" data-pt="2015 — 2017" data-nl="2015 — 2017" data-de="2015 — 2017" data-fr="2015 — 2017" data-it="2015 — 2017" data-es="2015 — 2017">2015 — 2017</span>
+                </div>
+                <p class="cv-org" data-en="Isfahan University of Technology" data-pt="Universidade de Tecnologia de Isfahan" data-nl="Isfahan University of Technology" data-de="Isfahan University of Technology" data-fr="Isfahan University of Technology" data-it="Isfahan University of Technology" data-es="Isfahan University of Technology">Isfahan University of Technology</p>
+              </div>
             </div>
-            <p class="cv-org" data-en="Isfahan University of Technology" data-pt="Universidade de Tecnologia de Isfahan" data-nl="Isfahan University of Technology" data-de="Isfahan University of Technology" data-fr="Isfahan University of Technology" data-it="Isfahan University of Technology" data-es="Isfahan University of Technology">Isfahan University of Technology</p>
             <p class="cv-meta" data-en="Isfahan, Iran" data-pt="Isfahan, Irão" data-nl="Isfahan, Iran" data-de="Isfahan, Iran" data-fr="Ispahan, Iran" data-it="Isfahan, Iran" data-es="Isfahán, Irán">Isfahan, Iran</p>
             <p
               class="cv-meta"
@@ -472,10 +486,15 @@
           </div>
           <div class="cv-entry">
             <div class="cv-entry-head">
-              <h3 data-en="Bachelor's in Physics" data-pt="Licenciatura em Física" data-nl="Bachelor in Natuurkunde" data-de="Bachelor in Physik" data-fr="Licence en Physique" data-it="Laurea in Fisica" data-es="Grado en Física">Bachelor's in Physics</h3>
-              <span class="cv-dates" data-en="2011 — 2015" data-pt="2011 — 2015" data-nl="2011 — 2015" data-de="2011 — 2015" data-fr="2011 — 2015" data-it="2011 — 2015" data-es="2011 — 2015">2011 — 2015</span>
+              <img class="cv-org-logo" src="assets/images/logos/isfahan-university-of-technology.svg" alt="Isfahan University of Technology logo">
+              <div class="cv-entry-title-group">
+                <div class="cv-entry-title-row">
+                  <h3 data-en="Bachelor's in Physics" data-pt="Licenciatura em Física" data-nl="Bachelor in Natuurkunde" data-de="Bachelor in Physik" data-fr="Licence en Physique" data-it="Laurea in Fisica" data-es="Grado en Física">Bachelor's in Physics</h3>
+                  <span class="cv-dates" data-en="2011 — 2015" data-pt="2011 — 2015" data-nl="2011 — 2015" data-de="2011 — 2015" data-fr="2011 — 2015" data-it="2011 — 2015" data-es="2011 — 2015">2011 — 2015</span>
+                </div>
+                <p class="cv-org" data-en="Isfahan University of Technology" data-pt="Universidade de Tecnologia de Isfahan" data-nl="Isfahan University of Technology" data-de="Isfahan University of Technology" data-fr="Isfahan University of Technology" data-it="Isfahan University of Technology" data-es="Isfahan University of Technology">Isfahan University of Technology</p>
+              </div>
             </div>
-            <p class="cv-org" data-en="Isfahan University of Technology" data-pt="Universidade de Tecnologia de Isfahan" data-nl="Isfahan University of Technology" data-de="Isfahan University of Technology" data-fr="Isfahan University of Technology" data-it="Isfahan University of Technology" data-es="Isfahan University of Technology">Isfahan University of Technology</p>
             <p class="cv-meta" data-en="Isfahan, Iran" data-pt="Isfahan, Irão" data-nl="Isfahan, Iran" data-de="Isfahan, Iran" data-fr="Ispahan, Iran" data-it="Isfahan, Iran" data-es="Isfahán, Irán">Isfahan, Iran</p>
             <p class="cv-meta" data-en="Among the top 10% of graduates." data-pt="Entre os 10% melhores graduados." data-nl="Behoorde tot de top 10% van afgestudeerden." data-de="Gehörte zu den besten 10 % der Absolventen." data-fr="Parmi les 10 % meilleurs diplômés." data-it="Tra il 10% dei migliori laureati." data-es="Entre el 10% mejor de los graduados.">Among the top 10% of graduates.</p>
           </div>
