@@ -1363,35 +1363,80 @@ body {
   }
 
   /* Cover image removed on phone - it ate a lot of vertical space for
-     little payoff at this width. The avatar no longer needs to overlap
-     it, so profile-row switches from a negative pull-up margin to normal
-     top spacing. */
+     little payoff at this width. */
   .page-cv .cover-photo {
     display: none;
   }
 
+  /* Photo sits beside the name/title/pill block instead of stacked above
+     it. The download button lives outside .profile-row (moved in the
+     HTML) so profile-info's height is driven only by name+title+pill,
+     and the photo stretches to match that exact span - top of the name
+     to bottom of the pill. */
   .page-cv .profile-row {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
   }
 
-  /* Compact header: smaller avatar, tighter spacing, so the fold isn't
-     dominated by the photo. */
   .page-cv .avatar-frame {
-    width: 96px;
+    width: 110px;
+    flex-shrink: 0;
+    height: auto;
+    border-radius: 18px;
+  }
+
+  .page-cv .avatar-frame::before {
+    border-radius: 20px;
   }
 
   .page-cv .avatar-frame .avatar,
   .page-cv .avatar {
-    width: 96px;
-    height: 96px;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
   }
 
-  .page-cv .profile-heading-row {
-    gap: 0.5rem;
+  .page-cv .profile-info {
+    margin-top: 0;
+    min-width: 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-cv .download-buttons {
+    margin-top: 0.9rem;
   }
 
   .page-cv .cv-header h1 {
     font-size: 1.7rem;
+  }
+
+  /* Reorder the header on phone to: name, title, "Available for work"
+     pill (was: name, pill, title - the pill used to wrap onto its own
+     line right under the name since profile-heading-row wraps on narrow
+     screens, landing visually between the name and the job title).
+     display:contents "unwraps" profile-heading-row so its children (h1,
+     tagline) become direct flex items of profile-info alongside .title,
+     letting all three be reordered together. */
+  .page-cv .profile-heading-row {
+    display: contents;
+  }
+
+  .page-cv .profile-heading-row h1 {
+    order: 1;
+  }
+
+  .page-cv .title {
+    order: 2;
+  }
+
+  .page-cv .cv-header .tagline {
+    order: 3;
+    align-self: flex-start;
+    margin-top: 0.5rem;
   }
 
   /* Section nav becomes a single horizontally-scrollable row instead of
