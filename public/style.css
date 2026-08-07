@@ -1203,6 +1203,25 @@ body {
   animation-duration: 1.8s;
 }
 
+/* Desktop header photo: rounded rectangle instead of a circle, matching
+   cv2's photo treatment. (On phone this element is hidden entirely in
+   favor of .cv-sidebar-mobile's own already-rectangular photo.) */
+.page-cv .cv-header .avatar-frame {
+  border-radius: 20px;
+}
+
+.page-cv .cv-header .avatar-frame::before {
+  border-radius: 22px;
+}
+
+.page-cv .cv-header .avatar,
+.page-cv .cv-header .avatar-frame .avatar {
+  width: 180px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+}
+
 /* Name + status pill share a row, with the pill pushed to the right edge
    of the page so it sits level with "Farhad Shadmand". */
 .page-cv .profile-heading-row {
@@ -1342,6 +1361,13 @@ body {
 }
 
 /* ---------- CV page: mobile layout fixes ---------- */
+/* Mobile-only identity card (cv2-style): hidden by default (desktop uses
+   .cv-header + .cv-sidebar instead), shown only under the 640px
+   breakpoint below. */
+.page-cv .cv-sidebar-mobile {
+  display: none;
+}
+
 @media (max-width: 640px) {
   /* The desktop-wide sidebar rule (.page-cv .cv-layout, 270px 1fr) has
      higher specificity than the original single-column mobile rule and
@@ -1353,7 +1379,7 @@ body {
   }
 
   .page-cv .cv-section,
-  .page-cv .cv-sidebar {
+  .page-cv .cv-sidebar-mobile {
     padding: 1.25rem 1.25rem 1.5rem;
     border-radius: 18px;
   }
@@ -1368,87 +1394,139 @@ body {
     display: none;
   }
 
-  /* Photo sits beside the name/title/pill block instead of stacked above
-     it. The download button lives outside .profile-row (moved in the
-     HTML) so profile-info's height is driven only by name+title+pill,
-     and the photo stretches to match that exact span - top of the name
-     to bottom of the pill. */
-  .page-cv .profile-row {
-    margin-top: 1rem;
-    display: flex;
-    align-items: stretch;
-    gap: 1rem;
+  /* Desktop's separate header + contacts-only sidebar are swapped out on
+     phone for one unified identity card (photo/name/tags/button/contact/
+     socials together), matching cv2's mobile design. */
+  .page-cv .cv-header,
+  .page-cv .cv-layout > .cv-sidebar {
+    display: none;
   }
 
-  .page-cv .avatar-frame {
-    width: 110px;
-    flex-shrink: 0;
-    height: auto;
+  .page-cv .cv-sidebar-mobile {
+    display: block;
+    margin-top: 1.25rem;
+    background: #1e1e1f;
+    border: 1px solid var(--hairline);
+  }
+
+  :root[data-theme="light"] .page-cv .cv-sidebar-mobile {
+    background: #f0f0f0;
+  }
+
+  .page-cv .sidebar-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .page-cv .sidebar-profile .avatar-frame {
+    width: 45%;
+    max-width: 180px;
     border-radius: 18px;
   }
 
-  .page-cv .avatar-frame::before {
+  .page-cv .sidebar-profile .avatar-frame::before {
     border-radius: 20px;
   }
 
-  .page-cv .avatar-frame .avatar,
-  .page-cv .avatar {
+  .page-cv .sidebar-profile .avatar,
+  .page-cv .sidebar-profile .avatar-frame .avatar {
     width: 100%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
     border-radius: 18px;
   }
 
-  .page-cv .profile-info {
-    margin-top: 0;
-    min-width: 0;
-    justify-content: center;
+  .page-cv .sidebar-name {
+    margin: 1rem 0 0;
+    font-size: 1.4rem;
+  }
+
+  .page-cv .sidebar-tags {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
   }
 
-  .page-cv .download-buttons {
-    margin-top: 0.9rem;
+  .page-cv .sidebar-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--chip-bg);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.82rem;
+    color: var(--fg);
   }
 
-  .page-cv .cv-header h1 {
-    font-size: 1.7rem;
+  .page-cv .sidebar-profile .download-buttons {
+    margin-top: 1rem;
   }
 
-  /* Reorder the header on phone to: name, title, "Available for work"
-     pill (was: name, pill, title - the pill used to wrap onto its own
-     line right under the name since profile-heading-row wraps on narrow
-     screens, landing visually between the name and the job title).
-     display:contents "unwraps" profile-heading-row so its children (h1,
-     tagline) become direct flex items of profile-info alongside .title,
-     letting all three be reordered together. */
-  .page-cv .profile-heading-row {
-    display: contents;
+  .page-cv .sidebar-divider {
+    border: none;
+    border-top: 1px solid var(--hairline);
+    margin: 1.25rem 0;
   }
 
-  .page-cv .profile-heading-row h1 {
-    order: 1;
+  .page-cv .cv-sidebar-mobile .sidebar-list li {
+    align-items: center;
   }
 
-  .page-cv .title {
-    order: 2;
+  .page-cv .cv-sidebar-mobile .sidebar-icon {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    background: rgba(230, 57, 70, 0.12);
+    border-radius: 10px;
+    color: var(--accent);
+    margin-top: 0;
   }
 
-  .page-cv .cv-header .tagline {
-    order: 3;
-    align-self: flex-start;
-    margin-top: 0.5rem;
+  .page-cv .sidebar-socials {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
   }
 
-  /* Section nav becomes a single horizontally-scrollable row instead of
-     wrapping across several lines. min-width:0 is required so the nav
-     actually scrolls internally instead of stretching its flex/grid
-     ancestors (and the whole page) wider than the viewport. */
+  .page-cv .sidebar-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 10px;
+    background: rgba(230, 57, 70, 0.12);
+    color: var(--accent);
+  }
+
+  .page-cv .sidebar-social svg {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  /* Section nav becomes plain text tabs in one horizontally-scrollable
+     row instead of bordered pill chips wrapping across several lines.
+     min-width:0 is required so it actually scrolls internally instead
+     of stretching its flex/grid ancestors (and the whole page) wider
+     than the viewport. */
   .page-cv .cv-layout,
   .page-cv .cv-main {
     min-width: 0;
   }
 
   .page-cv .section-nav {
+    background: #1e1e1f;
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 0.35rem 0.5rem;
+    gap: 0.15rem;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -1456,12 +1534,64 @@ body {
     min-width: 0;
   }
 
+  :root[data-theme="light"] .page-cv .section-nav {
+    background: #f0f0f0;
+  }
+
   .page-cv .section-nav::-webkit-scrollbar {
     display: none;
   }
 
-  .page-cv .section-nav a {
+  .page-cv .section-nav a,
+  .page-cv .section-nav a:link,
+  .page-cv .section-nav a:visited {
     flex-shrink: 0;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    background: transparent;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .page-cv .section-nav a.active {
+    background: transparent;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Section headings: short accent bar above the title instead of the
+     vertical bar to the left used on desktop. */
+  .page-cv .cv-section h2 {
+    display: block;
+    gap: 0;
+    font-size: 1.3rem;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 700;
+    color: var(--fg);
+    border-bottom: none;
+    padding-bottom: 0;
+    padding-top: 1.15rem;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+
+  .page-cv .cv-section h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 36px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .page-cv .cv-section {
+    position: relative;
   }
 
   /* University logos removed on phone - just the title/org/dates. */
