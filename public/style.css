@@ -1042,6 +1042,17 @@ body {
   gap: 1.1rem;
 }
 
+/* Contacts sidebar stays pinned while scrolling, same as the section
+   nav, instead of scrolling away once the main column runs past it.
+   (Desktop/tablet only - .cv-layout collapses to one column on phone,
+   where a sticky sidebar would overlap the content scrolling under it.) */
+.page-cv .cv-layout > .cv-sidebar {
+  position: sticky;
+  top: 1.25rem;
+  max-height: calc(100vh - 2.5rem);
+  overflow-y: auto;
+}
+
 :root[data-theme="light"] .page-cv .cv-section,
 :root[data-theme="light"] .page-cv .cv-sidebar {
   background: #f0f0f0;
@@ -1272,6 +1283,15 @@ body {
      the right of where .title-row's text starts; shift the whole badge
      left by that same amount so both lines line up. */
   margin-left: -0.9rem;
+}
+
+/* In light mode the badge text is dark (var(--fg)), so the dark
+   translucent background above (tuned for white text in dark mode)
+   would leave it barely readable - use a white translucent background
+   instead, still blurred, so it matches the light theme and cover
+   image. */
+:root[data-theme="light"] .page-cv .cv-header h1 {
+  background: rgba(255, 255, 255, 0.55);
 }
 
 /* Title + status pill share a row, with the pill pushed to the far
@@ -1658,4 +1678,25 @@ body {
     justify-content: flex-start;
     gap: 0.3rem 0.6rem;
   }
+}
+
+/* Sections (other than the first, "About me") fade/slide into view as
+   you scroll to them instead of all being visible on load. "About me" is
+   always displayed - it's excluded here with :not(:first-of-type) rather
+   than :not(:first-child) because .section-nav (a <nav>, not a
+   <section>) is the actual first child of .cv-main, which would
+   otherwise make "About me" (the first <section>) match :first-child's
+   negation too and get hidden along with the rest. JS adds .is-visible
+   via IntersectionObserver; sections stay in their normal place in the
+   layout throughout (opacity/transform only), so nothing shifts if JS
+   fails to load. */
+.cv-main .cv-section:not(:first-of-type) {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.cv-main .cv-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }

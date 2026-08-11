@@ -111,5 +111,30 @@
         observer.observe(section);
       });
     }
+
+    // Sections fade/slide into view as you scroll to them, instead of
+    // all being visible immediately. The first section ("About me") is
+    // already on screen on load, so it's left visible as-is.
+    var cvMain = document.querySelector('.cv-main');
+    if (cvMain) {
+      var revealSections = Array.prototype.slice.call(cvMain.querySelectorAll('.cv-section'));
+      if (revealSections.length > 1) {
+        var revealObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+
+        revealSections.slice(1).forEach(function (section) {
+          revealObserver.observe(section);
+        });
+      }
+    }
   });
 })();
