@@ -1222,18 +1222,73 @@ body {
   border-radius: 20px;
 }
 
-/* Name + status pill share a row, with the pill pushed to the right edge
-   of the page so it sits level with "Farhad Shadmand". */
-.page-cv .profile-heading-row {
+/* Name/title sit beside the photo instead of below it. The photo and the
+   text block each get their own negative margin-top (instead of sharing
+   one via the row), so their overlap with the cover image can be tuned
+   independently: the photo sits exactly half on/half off the cover
+   image, while the name (further down, closer to the title) still lands
+   fully on the cover and the title fully below it. (On phone .cv-header
+   is hidden entirely, so this doesn't apply there.) */
+.page-cv .cv-header .profile-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  /* .cover-photo is position:relative, which puts it in a higher paint
+     layer than this row's default position:static content - without
+     this, the cover image visually covers the name even though the row
+     comes later in the HTML. Matching it to position:relative here joins
+     the same paint layer, where DOM order (this row is later) wins. */
+  position: relative;
+  /* Cancels the base (non-header) .profile-row { margin-top: -90px }
+     rule - the photo and text block below get their own independent
+     offsets instead of sharing one on this row. */
+  margin-top: 0;
+}
+
+.page-cv .cv-header .avatar-frame {
+  /* Photo height is 180px wide at a 4:5 aspect ratio = 225px tall;
+     -112.5px puts exactly half of it above the cover's bottom edge. */
+  margin-top: -112.5px;
+}
+
+.page-cv .cv-header .profile-info {
+  margin-top: -65px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Name sits in a frosted-glass badge over the cover image: slightly
+   bigger text, a translucent dark box, and a background blur so the
+   busy image behind it doesn't fight with the text for legibility. */
+.page-cv .cv-header h1 {
+  display: inline-block;
+  font-size: 2.75rem;
+  background: rgba(11, 11, 12, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 0.4rem 0.9rem;
+  /* The box's own left padding would otherwise push the text 0.9rem to
+     the right of where .title-row's text starts; shift the whole badge
+     left by that same amount so both lines line up. */
+  margin-left: -0.9rem;
+}
+
+/* Title + status pill share a row, with the pill pushed to the far
+   right. The top margin (moved here from .title itself) is what pushes
+   this row below the cover image - see .profile-row's
+   align-items:flex-start and reduced overlap above. */
+.page-cv .cv-header .title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem 1rem;
+  margin-top: 0.75rem;
 }
 
-.page-cv .profile-heading-row h1 {
-  margin: 0;
+.page-cv .cv-header .title-row .title {
+  margin-top: 0;
 }
 
 /* "Available for work" status pill: white pill + pulsing dot, adapted to
