@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farhad Shadmand — My Projects</title>
+  <meta name="description" content="A gallery of Farhad Shadmand's research and side projects — click any project for details, tech stack, and links.">
+  <link rel="canonical" href="https://farhadshad.com/my-projects">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <meta property="og:title" content="Farhad Shadmand — My Projects">
+  <meta property="og:description" content="A gallery of Farhad Shadmand's research and side projects — click any project for details, tech stack, and links.">
+  <meta property="og:image" content="https://farhadshad.com/assets/images/og-preview.jpg">
+  <meta property="og:url" content="https://farhadshad.com/my-projects.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Farhad Shadmand — My Projects">
+  <meta name="twitter:description" content="A gallery of Farhad Shadmand's research and side projects — click any project for details, tech stack, and links.">
+  <meta name="twitter:image" content="https://farhadshad.com/assets/images/og-preview.jpg">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body class="cv-page page-cv projects-page">
+  <header class="site-nav">
+    <a href="index.html" class="site-logo" data-en="Farhad Shadmand" data-pt="Farhad Shadmand" data-nl="Farhad Shadmand" data-de="Farhad Shadmand" data-fr="Farhad Shadmand" data-it="Farhad Shadmand" data-es="Farhad Shadmand">Farhad Shadmand</a>
+    <nav class="site-nav-links">
+      <a href="cv.html" data-en="CV" data-pt="CV" data-nl="CV" data-de="Lebenslauf" data-fr="CV" data-it="CV" data-es="CV">CV</a>
+      <a href="my-projects.html" class="active" data-en="My Projects" data-pt="Meus Projetos" data-nl="Mijn Projecten" data-de="Meine Projekte" data-fr="Mes Projets" data-it="I Miei Progetti" data-es="Mis Proyectos">My Projects</a>
+      <a href="blog.html" data-en="Blog" data-pt="Blog" data-nl="Blog" data-de="Blog" data-fr="Blog" data-it="Blog" data-es="Blog">Blog</a>
+      <a href="ai-twin.html" data-en="AI Twin" data-pt="Gémeo IA" data-nl="AI-tweeling" data-de="KI-Zwilling" data-fr="Jumeau IA" data-it="Gemello IA" data-es="Gemelo IA">AI Twin</a>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark and light mode">🌙</button>
+      <select id="lang-select" class="icon-btn lang-select" aria-label="Switch language">
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+        <option value="nl">NL</option>
+        <option value="de">DE</option>
+        <option value="fr">FR</option>
+        <option value="it">IT</option>
+        <option value="es">ES</option>
+      </select>
+    </nav>
+  </header>
+
+  <main class="cv">
+    <header class="cv-header cv-header--centered">
+      <h1 data-en="My Projects" data-pt="Meus Projetos" data-nl="Mijn Projecten" data-de="Meine Projekte" data-fr="Mes Projets" data-it="I Miei Progetti" data-es="Mis Proyectos">My Projects</h1>
+      <p
+        class="title"
+        data-en="A gallery of research and side projects. Click any card for details."
+        data-pt="Uma galeria de projetos de investigação e projetos pessoais. Clique num cartão para ver detalhes."
+        data-nl="Een galerij van onderzoeks- en nevenprojecten. Klik op een kaart voor details."
+        data-de="Eine Galerie aus Forschungs- und Nebenprojekten. Für Details auf eine Karte klicken."
+        data-fr="Une galerie de projets de recherche et personnels. Cliquez sur une carte pour voir les détails."
+        data-it="Una galleria di progetti di ricerca e personali. Clicca su una scheda per i dettagli."
+        data-es="Una galería de proyectos de investigación y personales. Haz clic en una tarjeta para ver los detalles."
+      >A gallery of research and side projects. Click any card for details.</p>
+
+      <nav class="project-filter" id="project-filter" aria-label="Filter projects">
+        <button type="button" class="project-filter-btn is-active" data-filter="all">All</button>
+        <button type="button" class="project-filter-btn" data-filter="isr">ISR-Coimbra</button>
+        <button type="button" class="project-filter-btn" data-filter="personal">Home Project</button>
+      </nav>
+    </header>
+
+    <div class="projects-grid" id="projects-grid"></div>
+  </main>
+
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="project-modal-backdrop" data-close-modal></div>
+    <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+      <button type="button" class="project-modal-close" data-close-modal aria-label="Close">&times;</button>
+      <div class="project-modal-media" id="project-modal-media"></div>
+      <div class="project-modal-body">
+        <h2 id="project-modal-title"></h2>
+        <p class="project-modal-affiliation" id="project-modal-affiliation"></p>
+        <p id="project-modal-description"></p>
+        <div class="project-modal-role" id="project-modal-role"></div>
+        <div class="project-modal-tech" id="project-modal-tech"></div>
+        <div class="project-modal-links" id="project-modal-links"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="site.js"></script>
+  <script src="my-projects.js"></script>
+</body>
+</html>

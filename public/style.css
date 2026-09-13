@@ -1472,7 +1472,7 @@ body {
   /* Desktop's separate header + contacts-only sidebar are swapped out on
      phone for one unified identity card (photo/name/tags/button/contact/
      socials together), matching cv2's mobile design. */
-  .page-cv .cv-header,
+  .page-cv:not(.projects-page) .cv-header,
   .page-cv .cv-layout > .cv-sidebar {
     display: none;
   }
@@ -1699,4 +1699,310 @@ body {
 .cv-main .cv-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ---------- My Projects page ---------- */
+
+.page-cv .project-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.page-cv .project-filter-btn {
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.page-cv .project-filter-btn:hover {
+  color: var(--fg);
+  border-color: var(--accent);
+}
+
+.page-cv .project-filter-btn.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.page-cv .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 800px) {
+  .page-cv .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .page-cv .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page-cv .project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-cv .project-card[hidden] {
+  display: none;
+}
+
+.page-cv .project-card:hover,
+.page-cv .project-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  outline: none;
+}
+
+.page-cv .project-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.page-cv .project-card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-cv .project-card-logo {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem;
+  object-fit: contain;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.page-cv .project-card-overlay {
+  flex: 1;
+  width: 100%;
+  padding: 1rem 1.1rem 1.1rem;
+  background: #1e1e1f;
+  text-align: left;
+}
+
+:root[data-theme="light"] .page-cv .project-card-overlay {
+  background: #f0f0f0;
+}
+
+.page-cv .project-card-overlay h3 {
+  margin: 0;
+  color: var(--fg);
+  font-size: 1.05rem;
+}
+
+.page-cv .project-card-affiliation {
+  margin: 0.2rem 0 0;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+.page-cv .project-card-overlay p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Project detail popup */
+
+.page-cv .project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.page-cv .project-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.page-cv .project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.page-cv .project-modal-dialog {
+  position: relative;
+  width: min(600px, 92vw);
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #1e1e1f;
+  border: 1px solid var(--hairline);
+  border-radius: 18px;
+  transform: translateY(16px);
+  transition: transform 0.2s ease;
+}
+
+.page-cv .project-modal.is-open .project-modal-dialog {
+  transform: translateY(0);
+}
+
+:root[data-theme="light"] .page-cv .project-modal-dialog {
+  background: #f0f0f0;
+}
+
+.page-cv .project-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.page-cv .project-modal-close:hover {
+  background: var(--accent);
+}
+
+.page-cv .project-modal-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px 18px 0 0;
+}
+
+.page-cv .project-modal-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px 18px 0 0;
+}
+
+.page-cv .project-modal-logo {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.4rem;
+  object-fit: contain;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.page-cv .project-modal-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.page-cv .project-modal-body h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  color: var(--fg);
+}
+
+.page-cv .project-modal-body p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.page-cv .project-modal-affiliation {
+  margin: 0 0 1rem !important;
+  color: var(--accent) !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.page-cv .project-modal-role {
+  margin-top: 1.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.page-cv .project-modal-role h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  color: var(--fg);
+}
+
+.page-cv .project-modal-role p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.page-cv .project-modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+.page-cv .project-tech-chip {
+  background: var(--chip-bg);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.82rem;
+  color: var(--fg);
+}
+
+.page-cv .project-modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
 }
