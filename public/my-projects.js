@@ -9,7 +9,12 @@
   // "affiliation" is an optional institution line shown under the modal
   // title, "role" is an optional line describing your part in the work, and
   // "category" ("isr" or "personal") drives the All / ISR-Coimbra / Home
-  // Project filter above the grid.
+  // Project filter above the grid. Optional "cardVideo"/"cardImage"/
+  // "cardPoster" override the grid card's media only, so the card can show
+  // something different (e.g. an animated preview) from the modal, which
+  // always falls back to "video"/"image"/"gradient". Optional
+  // "descriptionHtml" (raw HTML, e.g. multiple <p> and a <a> link) replaces
+  // plain "description" in the modal when a richer write-up is needed.
   // The grid and the popup are both built from this array automatically.
   // ---------------------------------------------------------------------
   var PROJECTS = [
@@ -27,7 +32,9 @@
         { label: 'Results & Paper', url: 'https://farhadsh1992.github.io/CodeFace2/' }
       ],
       image: 'assets/images/projects/codeface/diagram.jpg',
-      logo: 'assets/images/projects/codeface/logo.png'
+      logo: 'assets/images/projects/codeface/logo.png',
+      cardVideo: 'assets/videos/projects/codeface/encoder-decoder.mp4',
+      cardPoster: 'assets/images/projects/codeface/card-poster.jpg'
     },
     {
       id: 'truim',
@@ -108,9 +115,12 @@
       id: 'xt-arm',
       title: 'XT-ARM',
       category: 'personal',
-      shortDescription: 'A multi-provider AI chat app with live object and hand-gesture tracking.',
+      shortDescription: 'Robust Simulation System (RoSS) is a noise-simulation platform and benchmark for evaluating printable DL and ML models.',
       affiliation: 'Personal Project',
-      description: 'XT-ARM is a multi-provider AI chat app (sibling native builds for Linux — GTK4/libadwaita — and macOS — SwiftUI) supporting OpenAI, Claude, Kimi, DeepSeek, and Gemini per conversation. It includes file attachment and webcam photo capture as vision input, a Tasks page for quick-launch saved prompts, secure API-key storage via the system keyring, and a Live Track mode for real-time object detection and hand-gesture tracking from the webcam. More details and results coming very soon.',
+      descriptionHtml: '<p>Robust Simulation System (RoSS) is a noise-simulation platform and benchmark for evaluating deep learning and machine learning models that normally require physical print-and-camera testing.</p>' +
+        '<p>The project has two main components. First, it uses a fast, programmable robotic system to capture images of printed papers and cards efficiently. We use NVIDIA’s <a href="https://github.com/nvidia-isaac/video_to_data" target="_blank" rel="noopener noreferrer">Video-to-Data (V2D)</a> framework together with a robotic arm. The arm can be programmed by demonstrating the desired hand movements under predefined conditions, enabling rapid and consistent image capture. This system supports faster dataset collection and physical testing.</p>' +
+        '<p>Second, RoSS develops neural networks that simulate print-and-capture degradation caused by different printers, cameras, and lighting conditions.</p>' +
+        '<p>RoSS enables researchers to evaluate models digitally under realistic simulated conditions, reducing the cost and time associated with repeated printing and camera-based experiments. Our goal is to show that RoSS results closely match real-world performance in applications such as watermarking, face detection, and face verification using printed facial images.</p>',
       tech: ['Python', 'GTK4', 'SwiftUI', 'Computer Vision', 'AI'],
       image: 'assets/images/projects/xt-arm/thumb.png',
       logo: 'assets/images/projects/xt-arm/logo.png',
@@ -128,19 +138,22 @@
 
     var media = document.createElement('div');
     media.className = 'project-card-media';
-    if (project.video) {
+    var cardVideoSrc = project.cardVideo || project.video;
+    var cardImageSrc = project.cardImage || project.image;
+    if (cardVideoSrc) {
       var video = document.createElement('video');
       video.className = 'project-card-video';
-      video.src = project.video;
-      if (project.poster) video.poster = project.poster;
+      video.src = cardVideoSrc;
+      var cardPosterSrc = project.cardPoster || project.poster;
+      if (cardPosterSrc) video.poster = cardPosterSrc;
       video.autoplay = true;
       video.loop = true;
       video.muted = true;
       video.setAttribute('muted', '');
       video.playsInline = true;
       media.appendChild(video);
-    } else if (project.image) {
-      media.style.backgroundImage = 'url(' + project.image + ')';
+    } else if (cardImageSrc) {
+      media.style.backgroundImage = 'url(' + cardImageSrc + ')';
     } else if (project.gradient) {
       media.style.background = project.gradient;
     }
@@ -238,7 +251,12 @@
     affiliationEl.textContent = project.affiliation || '';
     affiliationEl.hidden = !project.affiliation;
 
-    document.getElementById('project-modal-description').textContent = project.description || project.shortDescription || '';
+    var descriptionEl = document.getElementById('project-modal-description');
+    if (project.descriptionHtml) {
+      descriptionEl.innerHTML = project.descriptionHtml;
+    } else {
+      descriptionEl.textContent = project.description || project.shortDescription || '';
+    }
 
     var roleEl = document.getElementById('project-modal-role');
     roleEl.innerHTML = '';
